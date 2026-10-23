@@ -58,7 +58,7 @@ lecture8	code/tests/test_skill_tools.py	managed	ok
 lecture8	code/token_growth.py	managed	ok
 lecture8	code/validator.py	managed	ok
 lecture9	code/closed_loop.py	managed	ok
-lecture9	code/tests/test_closed_loop.py	error	missing fake_tools, orchestrator, skill_tools
+lecture9	code/tests/test_closed_loop.py	managed	imports closed_loop through a sys.path line the static reader cannot follow; passes under pytest
 lecture9	code/tests/test_run_sim_demo.py	excluded	tests run_sim_demo.sh, which needs ARIAC and Docker and is not in this repository
 lecture9	code/tests/test_vlm_check.py	managed	ok
 lecture9	code/vlm_check.py	managed	ok

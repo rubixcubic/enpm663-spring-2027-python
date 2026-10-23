@@ -41,7 +41,9 @@ excluded reason).
 
 RUNTIME_ROS overrides this reading for a script that needs ROS 2 only because of
 something it does when it runs, not because of what it imports: it always gets the
-verdict ROS, with its own reason, no matter what its imports say.
+verdict ROS, with its own reason, no matter what its imports say. RUNTIME_EXCLUDED
+gives the verdict excluded the same way, and RUNTIME_MANAGED gives the verdict
+managed to a script whose imports this reading cannot follow.
 """
 import ast
 import importlib.util
@@ -79,6 +81,12 @@ RUNTIME_ROS = {
 RUNTIME_EXCLUDED = {
     "lecture9/code/tests/test_run_sim_demo.py":
         "tests run_sim_demo.sh, which needs ARIAC and Docker and is not in this repository",
+}
+# A script whose imports this reading cannot follow, checked by hand to run without
+# ROS 2: always managed, with its own reason. Keys are paths relative to SLIDES.
+RUNTIME_MANAGED = {
+    "lecture9/code/tests/test_closed_loop.py":
+        "imports closed_loop through a sys.path line the static reader cannot follow; passes under pytest",
 }
 
 
@@ -213,10 +221,13 @@ for lecture in sorted(SLIDES.glob("lecture*"), key=lambda p: int(re.sub(r"\D", "
         rel_to_slides = py.relative_to(SLIDES).as_posix()
         ros_override = RUNTIME_ROS.get(rel_to_slides)
         excluded_override = RUNTIME_EXCLUDED.get(rel_to_slides)
+        managed_override = RUNTIME_MANAGED.get(rel_to_slides)
         if ros_override is not None:
             kind, detail = "ROS", ros_override
         elif excluded_override is not None:
             kind, detail = "excluded", excluded_override
+        elif managed_override is not None:
+            kind, detail = "managed", managed_override
         else:
             kind, detail = verdict(missing_names(py, cache))
         counts[kind] += 1

@@ -82,7 +82,7 @@ exists.
 | L6 | Task-Level Planning with PDDL | 8 | nothing |
 | L7 | Plan Execution Patterns with Behavior Trees | 7 | nothing |
 | L8 | LLM Agents I: Agent Loops, Tool Use, and Structured Output | 17 | nothing |
-| L9 | LLM Agents II: VLM Grounding and Agentic Replanning | 3 | nothing |
+| L9 | LLM Agents II: VLM Grounding and Agentic Replanning | 4 | nothing |
 | L10 | Frames, Transforms, and Motion Planning | 2 | nothing |
 | L11 | Recovery, Robustness, and Failure Handling for Agentic Systems | 4 | nothing |
 | L12 | Evaluation and Measurement Science for Agentic Systems | 4 | nothing |
@@ -106,10 +106,8 @@ wording.
 - **L8's `skills_mcp_client.py` and `skills_mcp_server.py`.** Excluded: they
   need the `mcp` package, which needs `jsonschema>=4.20`, and this project
   pins `jsonschema==4.10.3`.
-- **L9's `tests/test_closed_loop.py` and `tests/test_run_sim_demo.py`.** The
-  first needs lecture 8 files it cannot import here; the second tests
-  `run_sim_demo.sh`, which needs ARIAC and Docker. Neither is in this
-  repository.
+- **L9's `tests/test_run_sim_demo.py`.** It tests `run_sim_demo.sh`, which
+  needs ARIAC and Docker, so it is not in this repository.
 - **Outputs that need what this repository cannot carry.** Raw camera images
   and API responses (several recorded runs in lectures 8, 9 and 13), and an
   ARIAC source checkout (lecture 5's `mesh_depths.py`). `run_repo.sh` prints a

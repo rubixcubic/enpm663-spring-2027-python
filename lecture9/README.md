@@ -1,6 +1,6 @@
 # Lecture 9 scripts
 
-Three managed files. They build on the L8 code, so keep `lecture9/code/` next
+Four managed files. They build on the L8 code, so keep `lecture9/code/` next
 to `lecture8/code/`.
 
 - **`vlm_check.py`**: the prompts, the schema, `check()` and `cross_check()`.
@@ -17,4 +17,7 @@ to `lecture8/code/`.
 - **`tests/test_vlm_check.py`**: not described on the docs code page. Not
   shown on a slide. Pytest tests; `run_repo.sh` does not run them here (run
   them with `cd lecture9/code && env -u PYTHONPATH uv run python -m
-  pytest`).
+  pytest tests`).
+- **`tests/test_closed_loop.py`**: `closed_loop.py` with `FakeTools`: both
+  policies, the wait tool, the goal check. Not described on the docs code
+  page. Not shown on a slide. Pytest tests; run them the same way.
