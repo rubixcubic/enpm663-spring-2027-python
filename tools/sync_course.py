@@ -16,6 +16,8 @@ import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Cache folders the "not managed" notes skip: Python and pytest write them, not a person.
+SKIP = {"__pycache__", ".pytest_cache"}
 
 
 def load(root: Path) -> tuple[dict, dict]:
@@ -62,7 +64,7 @@ def check(root: Path) -> tuple[list[str], list[str]]:
             folder = paths[where] / lecture
             for sub in ("code", "outputs"):
                 for f in sorted((folder / sub).rglob("*")) if (folder / sub).is_dir() else []:
-                    if f.is_file() and f not in managed and "__pycache__" not in f.parts \
+                    if f.is_file() and f not in managed and not SKIP.intersection(f.parts) \
                             and "raw" not in f.relative_to(folder).parts:
                         notes.append(f"{where}: not managed {f.relative_to(paths[where])}")
     return problems, notes

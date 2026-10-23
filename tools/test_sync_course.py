@@ -90,3 +90,13 @@ def test_missing_target_root(tmp_path):
     with pytest.raises(SystemExit) as err:
         sync_course.check(root)
     assert "nowhere" in str(err.value)
+
+
+def test_pytest_cache_not_noted(tmp_path):
+    root = make_layout(tmp_path, MANIFEST)
+    sync_course.write(root)
+    cache = tmp_path / "slides/lectures/lecture2/code/tests/.pytest_cache/v/cache"
+    cache.mkdir(parents=True)
+    (cache / "nodeids").write_text("[]\n")
+    _, notes = sync_course.check(root)
+    assert not any(".pytest_cache" in n for n in notes)
