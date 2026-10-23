@@ -5,9 +5,9 @@ ROS 2, and write tools/manifest.toml. It never runs a lecture script.
 
 For each script, this reads its module-level imports with ast: an import inside a
 function or a method does not count, since that code only runs when the function is
-called, not when the file is imported. An import in a class body counts. An import inside a try block
-that catches ImportError or ModuleNotFoundError is optional: a missing optional name
-never fails the script.
+called, not when the file is imported. An import in a class body counts. An import
+inside a try block that catches ImportError or ModuleNotFoundError is optional: a
+missing optional name never fails the script.
 
 A name is local when it is one of the lecture's own files: <name>.py or a package
 folder <name>/__init__.py, found first in the script's own folder, then (for a
