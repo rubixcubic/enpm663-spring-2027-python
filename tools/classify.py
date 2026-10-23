@@ -65,6 +65,13 @@ EXCLUDED = {
 RUNTIME_ROS = {
     "lecture8/code/stop_test.py": "calls ros_node(), which imports rclpy, at module level",
 }
+# A script whose imports alone look managed, but that this project excludes for a
+# reason its imports cannot show (it runs a shell script this repository does not
+# carry). Keys are paths relative to SLIDES; the verdict is "excluded", not "managed".
+RUNTIME_EXCLUDED = {
+    "lecture9/code/tests/test_run_sim_demo.py":
+        "tests run_sim_demo.sh, which needs ARIAC and Docker and is not in this repository",
+}
 
 
 def optional_handler(handler) -> bool:
@@ -195,9 +202,13 @@ for lecture in sorted(SLIDES.glob("lecture*"), key=lambda p: int(re.sub(r"\D", "
         if "__pycache__" in py.parts:
             continue
         rel = py.relative_to(lecture).as_posix()
-        override = RUNTIME_ROS.get(py.relative_to(SLIDES).as_posix())
-        if override is not None:
-            kind, detail = "ROS", override
+        rel_to_slides = py.relative_to(SLIDES).as_posix()
+        ros_override = RUNTIME_ROS.get(rel_to_slides)
+        excluded_override = RUNTIME_EXCLUDED.get(rel_to_slides)
+        if ros_override is not None:
+            kind, detail = "ROS", ros_override
+        elif excluded_override is not None:
+            kind, detail = "excluded", excluded_override
         else:
             kind, detail = verdict(missing_names(py, cache))
         counts[kind] += 1

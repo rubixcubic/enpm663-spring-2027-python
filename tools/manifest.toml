@@ -211,7 +211,6 @@ both = [
     "outputs/vlm_check.txt",
 ]
 slides = [
-    "code/tests/test_run_sim_demo.py",
     "code/tests/test_vlm_check.py",
 ]
 

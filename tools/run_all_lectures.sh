@@ -19,20 +19,34 @@ REPORT=tools/run_report.txt
 : > "$REPORT"
 SCRATCH=$(mktemp -d)
 trap 'rm -rf "$SCRATCH"' EXIT
+# R9 recorded inputs: measured runs a managed step reads from outputs/, never written
+# by any run_repo.sh step. Kept in one place, as the full path relative to this
+# repository, so the pre-run clearing step below excludes each one by its full path,
+# not by basename (two lectures' outputs/ trees can otherwise share a basename, for
+# example lecture8/outputs/structured_live.txt, the recorded input, and
+# lecture8/outputs/listings/structured_live.txt, a real listings.py build output).
+RECORDED_INPUTS=(
+  lecture8/outputs/agent_rec1.txt
+  lecture8/outputs/agent_run1_cost.txt
+  lecture8/outputs/agent_run1_usage.json
+  lecture8/outputs/mcp_demo.txt
+  lecture8/outputs/structured_live.txt
+  lecture9/outputs/closed_loop_replan_rec1.txt
+  lecture9/outputs/closed_loop_wait_rec1.txt
+  lecture13/outputs/er_rec1.txt
+  lecture13/outputs/er_rec2.txt
+)
 # Every lecture folder goes into the scratch copy, so parents[2] / "lecture8" / "code" resolves.
 for lec in lecture*/; do /bin/cp -r "${lec%/}" "$SCRATCH/"; done
 /bin/cp pyproject.toml uv.lock .python-version "$SCRATCH/"
 for lec in lecture*/; do
   lec=${lec%/}
   if [[ ! -f "$lec/run_repo.sh" ]]; then echo "$lec: no run_repo.sh" >> "$REPORT"; continue; fi
-  # Recorded inputs (R9): measured runs a managed step reads from outputs/, never
-  # written by any run_repo.sh step, so clearing outputs/ must not remove them.
-  find "$SCRATCH/$lec/outputs" -type f ! -path '*/raw/*' \
-    ! -name agent_rec1.txt ! -name agent_run1_cost.txt ! -name agent_run1_usage.json \
-    ! -name mcp_demo.txt ! -name structured_live.txt \
-    ! -name closed_loop_replan_rec1.txt ! -name closed_loop_wait_rec1.txt \
-    ! -name er_rec1.txt ! -name er_rec2.txt \
-    -delete
+  find_args=(-type f ! -path '*/raw/*')
+  for ri in "${RECORDED_INPUTS[@]}"; do
+    find_args+=(! -path "$SCRATCH/$ri")
+  done
+  find "$SCRATCH/$lec/outputs" "${find_args[@]}" -delete
   env -i HOME="$HOME" PATH="$HOME/.local/bin:/usr/bin:/bin" \
     UV_PROJECT_ENVIRONMENT="$ROOT/.venv" \
     bash "$SCRATCH/$lec/run_repo.sh" > "$SCRATCH/$lec.log" 2>&1
