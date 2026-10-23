@@ -30,6 +30,10 @@ lecture's run_all.sh) or when the docs repo already copies them. Files the docs
 repo has no copy of go to "slides" only. classification.txt gets one line per
 script: lecture, path, kind (managed, ROS, error or excluded), and the detail (the
 missing names, "ok" for managed, or the excluded reason).
+
+RUNTIME_ROS overrides this reading for a script that needs ROS 2 only because of
+something it does when it runs, not because of what it imports: it always gets the
+verdict ROS, with its own reason, no matter what its imports say.
 """
 import ast
 import importlib.util
@@ -50,11 +54,16 @@ ROS = {
     "builtin_interfaces", "tf2_ros", "tf2_geometry_msgs", "tf_transformations",
     "launch", "launch_ros", "launch_testing", "ament_index_python", "rcl_interfaces",
     "action_msgs", "unique_identifier_msgs", "message_filters", "cv_bridge",
-    "example_interfaces",
+    "example_interfaces", "control_msgs",
 }
 # Names this project cannot install next to its pins: not ROS 2, not a real error.
 EXCLUDED = {
     "mcp": "needs jsonschema>=4.20, which conflicts with the jsonschema==4.10.3 pin",
+}
+# A script that needs ROS 2 only because of what it does when it runs, not what it
+# imports: always ROS, whatever its imports say. Keys are paths relative to SLIDES.
+RUNTIME_ROS = {
+    "lecture8/code/stop_test.py": "calls ros_node(), which imports rclpy, at module level",
 }
 
 
@@ -185,9 +194,13 @@ for lecture in sorted(SLIDES.glob("lecture*"), key=lambda p: int(re.sub(r"\D", "
     for py in sorted(code.rglob("*.py")):
         if "__pycache__" in py.parts:
             continue
-        kind, detail = verdict(missing_names(py, cache))
-        counts[kind] += 1
         rel = py.relative_to(lecture).as_posix()
+        override = RUNTIME_ROS.get(py.relative_to(SLIDES).as_posix())
+        if override is not None:
+            kind, detail = "ROS", override
+        else:
+            kind, detail = verdict(missing_names(py, cache))
+        counts[kind] += 1
         lines.append(f"{lecture.name}\t{rel}\t{kind}\t{detail}")
         if kind == "managed":
             (both if (DOCS / lecture.name / rel).is_file() else slides_only).append(rel)

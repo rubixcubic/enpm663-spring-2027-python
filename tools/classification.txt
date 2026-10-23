@@ -1,4 +1,4 @@
-lecture1	code/action_gripper.py	error	missing action_msgs, control_msgs, rclpy
+lecture1	code/action_gripper.py	ROS	action_msgs, control_msgs, rclpy
 lecture1	code/executor_blocking.py	ROS	rclpy
 lecture1	code/qos_mismatch.py	ROS	rclpy, std_msgs
 lecture1	code/tf_slot_lookup.py	ROS	geometry_msgs, rclpy, tf2_ros
@@ -11,7 +11,7 @@ lecture4	code/composite_status.py	managed	ok
 lecture4	code/kit_spread.py	managed	ok
 lecture4	code/parallel_watch.py	managed	ok
 lecture4	code/retry_demo.py	managed	ok
-lecture4	code/ros_tree_demo.py	error	missing control_msgs, py_trees_ros, rclpy, std_msgs, std_srvs
+lecture4	code/ros_tree_demo.py	ROS	control_msgs, py_trees_ros, rclpy, std_msgs, std_srvs
 lecture5	code/calibrate.py	managed	ok
 lecture5	code/detect_one.py	managed	ok
 lecture5	code/detector.py	managed	ok
@@ -48,7 +48,7 @@ lecture8	code/skill_tools.py	managed	ok
 lecture8	code/skills_mcp_client.py	excluded	mcp: needs jsonschema>=4.20, which conflicts with the jsonschema==4.10.3 pin
 lecture8	code/skills_mcp_server.py	excluded	mcp: needs jsonschema>=4.20, which conflicts with the jsonschema==4.10.3 pin
 lecture8	code/smoke.py	managed	ok
-lecture8	code/stop_test.py	managed	ok
+lecture8	code/stop_test.py	ROS	calls ros_node(), which imports rclpy, at module level
 lecture8	code/structured_live.py	managed	ok
 lecture8	code/stub_agv.py	managed	ok
 lecture8	code/tests/test_gemini_model.py	managed	ok

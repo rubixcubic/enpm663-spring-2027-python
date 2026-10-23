@@ -170,7 +170,6 @@ both = [
 ]
 slides = [
     "code/smoke.py",
-    "code/stop_test.py",
     "code/tests/test_gemini_model.py",
     "code/tests/test_listings.py",
     "code/tests/test_orchestrator.py",
