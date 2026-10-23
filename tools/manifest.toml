@@ -1,0 +1,278 @@
+# Managed files per lecture, written by tools/classify.py; review before the first sync.
+
+[lecture2]
+both = [
+    "code/run_all.sh",
+    "code/toy_factory.py",
+    "outputs/no_malfunction.txt",
+    "outputs/plan_only.txt",
+    "outputs/react_only.txt",
+    "outputs/summary.txt",
+    "outputs/sweep.txt",
+    "outputs/sweep_off.txt",
+    "outputs/three_layers.txt",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture3]
+both = [
+    "code/kit_views.py",
+    "code/ontology_check.py",
+    "code/run_all.sh",
+    "code/track_cell.py",
+    "outputs/kit_record.json",
+    "outputs/kit_views.txt",
+    "outputs/ontology_check.txt",
+    "outputs/track_cell.txt",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture4]
+both = [
+    "code/blackboard_demo.py",
+    "code/composite_status.py",
+    "code/kit_spread.py",
+    "code/parallel_watch.py",
+    "code/retry_demo.py",
+    "outputs/blackboard_demo.txt",
+    "outputs/composite_status.txt",
+    "outputs/kit_spread.txt",
+    "outputs/parallel_watch.txt",
+    "outputs/retry_demo.txt",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture5]
+both = [
+    "code/calibrate.py",
+    "code/detect_one.py",
+    "code/detector.py",
+    "code/mesh_depths.py",
+    "code/point_count.py",
+    "code/precision_recall.py",
+    "code/synth.py",
+    "code/timing.py",
+    "code/voltage_average.py",
+    "outputs/calibrate.txt",
+    "outputs/detect_one.txt",
+    "outputs/mesh_depths.txt",
+    "outputs/point_count.txt",
+    "outputs/precision_recall.txt",
+    "outputs/residuals.csv",
+    "outputs/timing.txt",
+    "outputs/versions.txt",
+    "outputs/voltage_average.txt",
+]
+slides = []
+
+[lecture6]
+both = [
+    "code/compare_planners.py",
+    "code/domain.pddl",
+    "code/gen_problem.py",
+    "code/kit_margin.py",
+    "code/kit_numeric.pddl",
+    "code/kit_numeric_problem.pddl",
+    "code/mistakes.py",
+    "code/numeric_try.py",
+    "code/plan_kit.py",
+    "code/problem.pddl",
+    "code/run_all.sh",
+    "code/select_cells.py",
+    "code/validate_plan.py",
+    "outputs/compare_planners.txt",
+    "outputs/fd_large.plan",
+    "outputs/fd_small.plan",
+    "outputs/fd_summary.txt",
+    "outputs/gen_problem.txt",
+    "outputs/ground_actions.txt",
+    "outputs/kit_margin.txt",
+    "outputs/mistakes.txt",
+    "outputs/numeric_try.txt",
+    "outputs/plan.txt",
+    "outputs/plan_kit.txt",
+    "outputs/plan_swapped.txt",
+    "outputs/problem_generated.pddl",
+    "outputs/problem_large.pddl",
+    "outputs/select_cells.txt",
+    "outputs/validate_plan.txt",
+    "outputs/versions.txt",
+]
+slides = [
+    "outputs/fd_large.log",
+    "outputs/fd_small.log",
+]
+
+[lecture7]
+both = [
+    "code/demo_factory.py",
+    "code/demo_nesting.py",
+    "code/demo_place_cell.py",
+    "code/demo_replan.py",
+    "code/demo_retry.py",
+    "code/demo_timeout.py",
+    "code/executor.py",
+    "outputs/factory_build.txt",
+    "outputs/factory_noguard.txt",
+    "outputs/factory_nomemory.txt",
+    "outputs/factory_tick.txt",
+    "outputs/factory_trace.txt",
+    "outputs/factory_unknown.txt",
+    "outputs/nesting_fail.txt",
+    "outputs/nesting_hang.txt",
+    "outputs/pytrees_1.txt",
+    "outputs/pytrees_3.txt",
+    "outputs/replan.txt",
+    "outputs/retry_2.txt",
+    "outputs/retry_3.txt",
+    "outputs/timeout_malfunction.txt",
+    "outputs/timeout_normal.txt",
+    "outputs/timeout_silent.txt",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture8]
+both = [
+    "code/fake_tools.py",
+    "code/gemini_model.py",
+    "code/gemini_prices.py",
+    "code/lecture_requirements.txt",
+    "code/listings.py",
+    "code/listings_l8.json",
+    "code/orchestrator.py",
+    "code/run_cost.py",
+    "code/sim_session.py",
+    "code/skill_tools.py",
+    "code/structured_live.py",
+    "code/stub_agv.py",
+    "code/token_growth.py",
+    "code/validator.py",
+    "outputs/listings/mcp_calls.txt",
+    "outputs/listings/mcp_tools.txt",
+    "outputs/listings/run1_calls.txt",
+    "outputs/listings/run1_cost.txt",
+    "outputs/listings/run1_obs24.txt",
+    "outputs/listings/run2.txt",
+    "outputs/listings/structured_live.txt",
+    "outputs/listings/system_message.txt",
+    "outputs/listings/token_growth.txt",
+    "outputs/listings/validator_retry1.txt",
+    "outputs/listings/validator_retry2.txt",
+    "outputs/listings/validator_seven.txt",
+    "outputs/system_message.txt",
+    "outputs/token_growth.txt",
+    "outputs/validator.txt",
+    "outputs/versions.txt",
+]
+slides = [
+    "code/smoke.py",
+    "code/stop_test.py",
+    "code/tests/test_gemini_model.py",
+    "code/tests/test_listings.py",
+    "code/tests/test_orchestrator.py",
+    "code/tests/test_skill_tools.py",
+]
+
+[lecture9]
+both = [
+    "code/closed_loop.py",
+    "code/listings_l9.json",
+    "code/vlm_check.py",
+    "outputs/listings/replan_part1.txt",
+    "outputs/listings/replan_part2.txt",
+    "outputs/listings/replan_part3.txt",
+    "outputs/listings/replan_tester1.txt",
+    "outputs/listings/vlm_attempts.txt",
+    "outputs/listings/vlm_cross.txt",
+    "outputs/listings/vlm_live_attempts.txt",
+    "outputs/listings/vlm_live_cross.txt",
+    "outputs/listings/vlm_live_kit.txt",
+    "outputs/listings/vlm_weak.txt",
+    "outputs/listings/wait_hold.txt",
+    "outputs/versions.txt",
+    "outputs/vlm_check.txt",
+]
+slides = [
+    "code/tests/test_run_sim_demo.py",
+    "code/tests/test_vlm_check.py",
+]
+
+[lecture10]
+both = [
+    "code/conveyor_intercept.py",
+    "code/rrt_connect_toy.py",
+    "outputs/conveyor_intercept.txt",
+    "outputs/rrt_connect.txt",
+    "outputs/rrt_seed1.json",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture11]
+both = [
+    "code/llm_output_checker.py",
+    "code/recovery_tree.py",
+    "code/run_all.sh",
+    "code/tester_watcher.py",
+    "code/timeout_demo.py",
+    "outputs/llm_output_checker.txt",
+    "outputs/recovery_tree.txt",
+    "outputs/tester_watcher.txt",
+    "outputs/timeout_demo.txt",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture12]
+both = [
+    "code/batch_bar.py",
+    "code/cells.csv",
+    "code/perception_metrics.py",
+    "code/run_all.sh",
+    "code/score_calculator.py",
+    "code/scoring_weights.yaml",
+    "code/shell_poses.csv",
+    "code/success_spread.py",
+    "outputs/batch_bar.txt",
+    "outputs/perception.txt",
+    "outputs/score_runs.json",
+    "outputs/score_runs.txt",
+    "outputs/success_spread.json",
+    "outputs/success_spread.txt",
+    "outputs/versions.txt",
+]
+slides = []
+
+[lecture13]
+both = [
+    "code/er_demo.py",
+    "code/er_rerun.py",
+    "code/run_all.sh",
+    "code/score_er.py",
+    "outputs/er_demo.txt",
+    "outputs/score_er.txt",
+    "outputs/score_er_rec1.txt",
+    "outputs/score_er_rec2.txt",
+    "outputs/versions.txt",
+]
+slides = [
+    "code/er_session.py",
+    "code/listings_l13.json",
+    "code/listings_l13.py",
+    "code/tests/conftest.py",
+    "code/tests/stop_child.py",
+    "code/tests/test_er_demo.py",
+    "code/tests/test_er_session.py",
+    "code/tests/test_score_er.py",
+    "outputs/listings/run1_answers.txt",
+    "outputs/listings/run2_cost.txt",
+    "outputs/listings/run2_rates.txt",
+    "outputs/listings/run2_table.txt",
+    "outputs/listings/scripted_check.txt",
+    "outputs/listings/scripted_request.txt",
+    "outputs/listings/scripted_score.txt",
+]

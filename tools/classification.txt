@@ -1,0 +1,87 @@
+lecture1	code/action_gripper.py	error	missing action_msgs, control_msgs, rclpy
+lecture1	code/executor_blocking.py	ROS	rclpy
+lecture1	code/qos_mismatch.py	ROS	rclpy, std_msgs
+lecture1	code/tf_slot_lookup.py	ROS	geometry_msgs, rclpy, tf2_ros
+lecture2	code/toy_factory.py	managed	ok
+lecture3	code/kit_views.py	managed	ok
+lecture3	code/ontology_check.py	managed	ok
+lecture3	code/track_cell.py	managed	ok
+lecture4	code/blackboard_demo.py	managed	ok
+lecture4	code/composite_status.py	managed	ok
+lecture4	code/kit_spread.py	managed	ok
+lecture4	code/parallel_watch.py	managed	ok
+lecture4	code/retry_demo.py	managed	ok
+lecture4	code/ros_tree_demo.py	error	missing control_msgs, py_trees_ros, rclpy, std_msgs, std_srvs
+lecture5	code/calibrate.py	managed	ok
+lecture5	code/detect_one.py	managed	ok
+lecture5	code/detector.py	managed	ok
+lecture5	code/mesh_depths.py	managed	ok
+lecture5	code/pc2_roundtrip.py	ROS	geometry_msgs, rclpy, sensor_msgs_py, std_msgs, tf2_ros
+lecture5	code/point_count.py	managed	ok
+lecture5	code/precision_recall.py	managed	ok
+lecture5	code/synth.py	managed	ok
+lecture5	code/timing.py	managed	ok
+lecture5	code/voltage_average.py	managed	ok
+lecture6	code/compare_planners.py	managed	ok
+lecture6	code/gen_problem.py	managed	ok
+lecture6	code/kit_margin.py	managed	ok
+lecture6	code/mistakes.py	managed	ok
+lecture6	code/numeric_try.py	managed	ok
+lecture6	code/plan_kit.py	managed	ok
+lecture6	code/select_cells.py	managed	ok
+lecture6	code/validate_plan.py	managed	ok
+lecture7	code/demo_factory.py	managed	ok
+lecture7	code/demo_nesting.py	managed	ok
+lecture7	code/demo_place_cell.py	managed	ok
+lecture7	code/demo_replan.py	managed	ok
+lecture7	code/demo_retry.py	managed	ok
+lecture7	code/demo_timeout.py	managed	ok
+lecture7	code/executor.py	managed	ok
+lecture8	code/fake_tools.py	managed	ok
+lecture8	code/gemini_model.py	managed	ok
+lecture8	code/gemini_prices.py	managed	ok
+lecture8	code/listings.py	managed	ok
+lecture8	code/orchestrator.py	managed	ok
+lecture8	code/run_cost.py	managed	ok
+lecture8	code/sim_session.py	managed	ok
+lecture8	code/skill_tools.py	managed	ok
+lecture8	code/skills_mcp_client.py	excluded	mcp: needs jsonschema>=4.20, which conflicts with the jsonschema==4.10.3 pin
+lecture8	code/skills_mcp_server.py	excluded	mcp: needs jsonschema>=4.20, which conflicts with the jsonschema==4.10.3 pin
+lecture8	code/smoke.py	managed	ok
+lecture8	code/stop_test.py	managed	ok
+lecture8	code/structured_live.py	managed	ok
+lecture8	code/stub_agv.py	managed	ok
+lecture8	code/tests/test_gemini_model.py	managed	ok
+lecture8	code/tests/test_listings.py	managed	ok
+lecture8	code/tests/test_orchestrator.py	managed	ok
+lecture8	code/tests/test_skill_tools.py	managed	ok
+lecture8	code/token_growth.py	managed	ok
+lecture8	code/validator.py	managed	ok
+lecture9	code/closed_loop.py	managed	ok
+lecture9	code/tests/test_closed_loop.py	error	missing fake_tools, orchestrator, skill_tools
+lecture9	code/tests/test_run_sim_demo.py	managed	ok
+lecture9	code/tests/test_vlm_check.py	managed	ok
+lecture9	code/vlm_check.py	managed	ok
+lecture10	code/conveyor_intercept.py	managed	ok
+lecture10	code/pixel_to_table.py	ROS	geometry_msgs, rclpy, sensor_msgs, tf2_ros
+lecture10	code/rrt_connect_toy.py	managed	ok
+lecture10	code/tf_agv_moves.py	ROS	geometry_msgs, rclpy, tf2_ros
+lecture10	code/tf_failures.py	ROS	geometry_msgs, rclpy, tf2_ros
+lecture11	code/llm_output_checker.py	managed	ok
+lecture11	code/recovery_tree.py	managed	ok
+lecture11	code/tester_watcher.py	managed	ok
+lecture11	code/timeout_demo.py	managed	ok
+lecture12	code/batch_bar.py	managed	ok
+lecture12	code/perception_metrics.py	managed	ok
+lecture12	code/score_calculator.py	managed	ok
+lecture12	code/success_spread.py	managed	ok
+lecture13	code/er_demo.py	managed	ok
+lecture13	code/er_rerun.py	managed	ok
+lecture13	code/er_session.py	managed	ok
+lecture13	code/listings_l13.py	managed	ok
+lecture13	code/score_er.py	managed	ok
+lecture13	code/tests/conftest.py	managed	ok
+lecture13	code/tests/stop_child.py	managed	ok
+lecture13	code/tests/test_er_demo.py	managed	ok
+lecture13	code/tests/test_er_session.py	managed	ok
+lecture13	code/tests/test_score_er.py	managed	ok
