@@ -27,5 +27,5 @@ else
   echo "skipped listings.py check: needs the deck's L8-ENPM663-v1.0.tex, not in this repo"
 fi
 
-echo "skipped pytest tests: run separately in Step 5"
+echo "skipped pytest tests: run them by hand with: cd lecture8/code && env -u PYTHONPATH uv run python -m pytest tests"
 echo "skipped tests/test_run_sim_demo.sh: not in this repo"

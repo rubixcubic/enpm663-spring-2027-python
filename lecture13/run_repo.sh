@@ -36,5 +36,5 @@ json.dump(spec, open(sys.argv[2], "w"))' listings_l13.json "$OFFLINE"
   rm -f "$OFFLINE"
   echo "skipped listings_l13.py build run1_answers/run2_table/run2_rates/run2_cost: need score_er_rec1.txt and score_er_rec2.txt, which need outputs/raw/, never committed (outputs: listings/run1_answers.txt listings/run2_table.txt listings/run2_rates.txt listings/run2_cost.txt)"
 fi
-echo "skipped pytest tests: run separately in Step 5"
+echo "skipped pytest tests: run them by hand with: cd lecture13/code && env -u PYTHONPATH uv run python -m pytest tests"
 echo "skipped tests/test_run_er_session.sh: not in this repo"
