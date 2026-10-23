@@ -206,10 +206,13 @@ for lecture in sorted(SLIDES.glob("lecture*"), key=lambda p: int(re.sub(r"\D", "
             (both if (DOCS / lecture.name / rel).is_file() else slides_only).append(rel)
     if not both and not slides_only:
         continue
-    for f in sorted(code.iterdir()):
-        if f.is_file() and f.suffix in DATA:
-            rel = f.relative_to(lecture).as_posix()
-            (both if (DOCS / lecture.name / rel).is_file() else slides_only).append(rel)
+    for f in sorted(code.rglob("*")):
+        if not f.is_file() or f.suffix not in DATA:
+            continue
+        if "__pycache__" in f.parts or "btcpp" in f.relative_to(code).parts:
+            continue
+        rel = f.relative_to(lecture).as_posix()
+        (both if (DOCS / lecture.name / rel).is_file() else slides_only).append(rel)
     manifest[lecture.name] = {"both": both, "slides": slides_only}
 
 (ROOT / "tools" / "classification.txt").write_text("\n".join(lines) + "\n")

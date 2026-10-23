@@ -137,6 +137,8 @@ slides = []
 
 [lecture8]
 both = [
+    "code/config/l8_trial.yaml",
+    "code/config/l8_user_config.yaml",
     "code/fake_tools.py",
     "code/gemini_model.py",
     "code/gemini_prices.py",
@@ -170,6 +172,9 @@ both = [
 ]
 slides = [
     "code/smoke.py",
+    "code/tests/fixtures/function_call.json",
+    "code/tests/fixtures/image_reply.json",
+    "code/tests/fixtures/tool_reply.json",
     "code/tests/test_gemini_model.py",
     "code/tests/test_listings.py",
     "code/tests/test_orchestrator.py",
@@ -179,6 +184,9 @@ slides = [
 [lecture9]
 both = [
     "code/closed_loop.py",
+    "code/config/l9_trial.yaml",
+    "code/config/l9_trial_dry.yaml",
+    "code/config/l9_user_config.yaml",
     "code/listings_l9.json",
     "code/vlm_check.py",
     "outputs/listings/replan_part1.txt",
@@ -259,6 +267,8 @@ both = [
     "outputs/versions.txt",
 ]
 slides = [
+    "code/config/l13_trial.yaml",
+    "code/config/l13_user_config.yaml",
     "code/er_session.py",
     "code/listings_l13.json",
     "code/listings_l13.py",
