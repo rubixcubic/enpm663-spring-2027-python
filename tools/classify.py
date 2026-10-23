@@ -4,8 +4,8 @@ ROS 2, and write tools/manifest.toml. It never runs a lecture script.
     env -i HOME=$HOME PATH=$HOME/.local/bin:/usr/bin:/bin PYTHONDONTWRITEBYTECODE=1 uv run python tools/classify.py
 
 For each script, this reads its module-level imports with ast: an import inside a
-function, a lambda or a class method does not count, since that code only runs when
-the function is called, not when the file is imported. An import inside a try block
+function or a method does not count, since that code only runs when the function is
+called, not when the file is imported. An import in a class body counts. An import inside a try block
 that catches ImportError or ModuleNotFoundError is optional: a missing optional name
 never fails the script.
 
@@ -25,11 +25,19 @@ project cannot install next to its pins (mcp needs a newer jsonschema than the o
 this project pins). Anything else is an error: a missing name that is not ROS 2 and
 not excluded.
 
-Each lecture's outputs are managed when a managed script writes them (named in the
-lecture's run_all.sh) or when the docs repo already copies them. Files the docs
-repo has no copy of go to "slides" only. classification.txt gets one line per
-script: lecture, path, kind (managed, ROS, error or excluded), and the detail (the
-missing names, "ok" for managed, or the excluded reason).
+For a lecture with at least one managed script, the manifest's code entries are the
+managed scripts and every data file (.yaml, .yml, .csv, .pddl, .json, .txt) under
+the lecture's code/ folder, except under btcpp/. A file goes to "both" when the docs
+repo has a copy of it, and to "slides" only when it does not.
+
+The outputs/ entries and code/run_all.sh are not generated here: they were added to
+the manifest by hand, after checking which outputs a managed script writes. A rerun
+reads the existing tools/manifest.toml and keeps each of those entries in the list
+("both" or "slides") it was in. Each list is written sorted.
+
+classification.txt gets one line per script: lecture, path, kind (managed, ROS,
+error or excluded), and the detail (the missing names, "ok" for managed, or the
+excluded reason).
 
 RUNTIME_ROS overrides this reading for a script that needs ROS 2 only because of
 something it does when it runs, not because of what it imports: it always gets the
@@ -85,7 +93,7 @@ def optional_handler(handler) -> bool:
 
 def walk(stmts, optional=False):
     """Yield (top_level_name, optional) for every import under a list of statements,
-    not descending into a function, a lambda or a class method."""
+    not descending into a function or a method."""
     for stmt in stmts:
         if isinstance(stmt, ast.Import):
             for alias in stmt.names:
@@ -226,9 +234,26 @@ for lecture in sorted(SLIDES.glob("lecture*"), key=lambda p: int(re.sub(r"\D", "
         (both if (DOCS / lecture.name / rel).is_file() else slides_only).append(rel)
     manifest[lecture.name] = {"both": both, "slides": slides_only}
 
+
+def carried(rel: str) -> bool:
+    """True for an entry this script does not generate, so a rerun keeps it."""
+    return rel.startswith("outputs/") or rel == "code/run_all.sh"
+
+
+manifest_path = ROOT / "tools" / "manifest.toml"
+old = tomllib.loads(manifest_path.read_text()) if manifest_path.is_file() else {}
+for lecture, entry in old.items():
+    new = manifest.setdefault(lecture, {"both": [], "slides": []})
+    for key in ("both", "slides"):
+        new[key] += [rel for rel in entry.get(key, []) if carried(rel) and rel not in new[key]]
+for entry in manifest.values():
+    for key in ("both", "slides"):
+        entry[key].sort()
+
 (ROOT / "tools" / "classification.txt").write_text("\n".join(lines) + "\n")
 out = ["# Managed files per lecture, written by tools/classify.py; review before the first sync.\n"]
-for lecture, entry in manifest.items():
+for lecture in sorted(manifest, key=lambda name: int(re.sub(r"\D", "", name))):
+    entry = manifest[lecture]
     out.append(f"[{lecture}]")
     for key in ("both", "slides"):
         items = ",\n    ".join(f'"{x}"' for x in entry[key])

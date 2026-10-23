@@ -155,10 +155,15 @@ bash tools/run_all_lectures.sh
 
 `tools/classify.py` regenerates the code part of `tools/manifest.toml` (which
 scripts import without ROS 2, and which files go to the slides repository,
-the docs repository, or both) by reading every script's imports. It never
-touches the `outputs/` entries: those were added by hand, after checking which
-outputs a managed script writes, and must be kept by hand when `classify.py`
-is rerun.
+the docs repository, or both) by reading every script's imports. It does not
+generate the `outputs/` entries or the `code/run_all.sh` entries: those were
+added by hand, after checking which outputs a managed script writes. A rerun
+reads the existing `tools/manifest.toml` and keeps each of those entries in
+the list it was in. Run it from a clean environment:
+
+```bash
+env -i HOME=$HOME PATH=$HOME/.local/bin:/usr/bin:/bin PYTHONDONTWRITEBYTECODE=1 uv run python tools/classify.py
+```
 
 ## Pushing (for the instructor)
 
