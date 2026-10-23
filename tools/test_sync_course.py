@@ -100,3 +100,41 @@ def test_pytest_cache_not_noted(tmp_path):
     (cache / "nodeids").write_text("[]\n")
     _, notes = sync_course.check(root)
     assert not any(".pytest_cache" in n for n in notes)
+
+
+@pytest.mark.parametrize("rel", ["code/../../outside.txt", "tools/outside.txt", "/tmp/outside.txt"])
+def test_entry_outside_code_and_outputs_refused(tmp_path, rel):
+    root = make_layout(tmp_path, f'[lecture2]\nboth = ["{rel}"]\n')
+    (root / "outside.txt").write_text("outside\n")
+    (root / "lecture2" / "tools").mkdir()
+    (root / "lecture2" / "tools" / "outside.txt").write_text("outside\n")
+    with pytest.raises(SystemExit) as err:
+        sync_course.write(root)
+    assert rel in str(err.value)
+    assert not (tmp_path / "slides/lectures/outside.txt").exists()
+    assert not (tmp_path / "slides/lectures/lecture2/tools").exists()
+
+
+def test_symlink_destination_refused(tmp_path):
+    root = make_layout(tmp_path, MANIFEST)
+    target = tmp_path / "target.txt"
+    target.write_text("keep\n")
+    (tmp_path / "slides/lectures/lecture2/code/toy.py").symlink_to(target)
+    with pytest.raises(SystemExit) as err:
+        sync_course.write(root)
+    assert "symlink" in str(err.value) and "toy.py" in str(err.value)
+    assert target.read_text() == "keep\n"
+    assert not (tmp_path / "docs/source/lectures/lecture2/code/toy.py").exists()
+
+
+def test_destination_resolving_outside_lecture_refused(tmp_path):
+    root = make_layout(tmp_path, MANIFEST)
+    elsewhere = tmp_path / "elsewhere"
+    elsewhere.mkdir()
+    code = tmp_path / "slides/lectures/lecture2/code"
+    code.rmdir()
+    code.symlink_to(elsewhere, target_is_directory=True)
+    with pytest.raises(SystemExit) as err:
+        sync_course.write(root)
+    assert "outside" in str(err.value) and "toy.py" in str(err.value)
+    assert not (elsewhere / "toy.py").exists()

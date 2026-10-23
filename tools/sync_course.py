@@ -6,14 +6,17 @@
 tools/manifest.toml lists the managed files per lecture: "both" go to the slides and the docs
 repos, "slides" to the slides repo only. tools/course_paths.toml gives the two lecture folders,
 relative to this repository. The script never deletes a file and never writes a file the
-manifest does not list.
+manifest does not list. Each entry must be a file under a lecture's code/ or outputs/ folder,
+with no "..", and the script refuses a destination that is a symlink or that resolves outside
+its lecture's folder.
 """
 import argparse
 import filecmp
+import re
 import shutil
 import sys
 import tomllib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 # Cache folders the "not managed" notes skip: Python and pytest write them, not a person.
@@ -31,15 +34,34 @@ def load(root: Path) -> tuple[dict, dict]:
     return paths, manifest
 
 
+def check_entry(lecture: str, rel: str) -> None:
+    """Stop unless the entry is a lecture's file under code/ or outputs/, with no ".."."""
+    parts = PurePosixPath(rel).parts
+    if not re.fullmatch(r"lecture\d+", lecture) or not parts \
+            or parts[0] not in ("code", "outputs") or ".." in parts:
+        sys.exit(f"manifest entry outside a lecture's code/ and outputs/: {lecture}/{rel}")
+
+
+def check_destination(dst: Path, folder: Path) -> None:
+    """Stop if the copy would be a symlink or would land outside the lecture's folder."""
+    if dst.is_symlink():
+        sys.exit(f"destination is a symlink, refused: {dst}")
+    if not dst.resolve().is_relative_to(folder):
+        sys.exit(f"destination resolves outside {folder}, refused: {dst}")
+
+
 def pairs(root: Path) -> list[tuple[Path, Path]]:
     paths, manifest = load(root)
     out = []
     for lecture, entry in manifest.items():
-        for rel in entry.get("both", []):
-            out.append((root / lecture / rel, paths["slides"] / lecture / rel))
-            out.append((root / lecture / rel, paths["docs"] / lecture / rel))
-        for rel in entry.get("slides", []):
-            out.append((root / lecture / rel, paths["slides"] / lecture / rel))
+        for where in ("both", "slides"):
+            for rel in entry.get(where, []):
+                check_entry(lecture, rel)
+                targets = ("slides", "docs") if where == "both" else ("slides",)
+                for name in targets:
+                    dst = paths[name] / lecture / rel
+                    check_destination(dst, paths[name] / lecture)
+                    out.append((root / lecture / rel, dst))
     for src, _ in out:
         if not src.is_file():
             sys.exit(f"manifest lists a file this repository does not have: {src.relative_to(root)}")
