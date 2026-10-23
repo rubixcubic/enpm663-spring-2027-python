@@ -1,0 +1,9 @@
+lecture5/outputs/timing.txt  measured times: run_all.sh's own comment says they change from run to run and from PC to PC
+lecture6/outputs/compare_planners.txt  Fast Downward's solve times (the last column) vary run to run
+lecture6/outputs/fd_large.log  Fast Downward's CPU/wall-clock times, memory figures and the venv/tmp-file paths in its log lines vary run to run and by machine
+lecture6/outputs/fd_small.log  Fast Downward's CPU/wall-clock times, memory figures and the venv/tmp-file paths in its log lines vary run to run and by machine
+lecture6/outputs/fd_summary.txt  the "Search time" lines it greps out of fd_large.log/fd_small.log vary run to run
+lecture7/outputs/nesting_fail.txt  a measured timeout; the elapsed seconds vary by a hundredth of a second run to run
+lecture7/outputs/nesting_hang.txt  a measured timeout; the elapsed seconds vary by a hundredth of a second run to run
+lecture7/outputs/timeout_malfunction.txt  a measured timeout; the elapsed seconds vary by a hundredth of a second run to run
+lecture7/outputs/timeout_silent.txt  a measured timeout; the elapsed seconds vary by a hundredth of a second run to run
