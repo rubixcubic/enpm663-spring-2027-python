@@ -2,9 +2,9 @@ small problem:
   Translator operators: 311
   Plan length: 19 step(s).
   Expanded 124 state(s).
-  Search time: 0.013185s
+  Search time: 0.016955s
 large problem:
   Translator operators: 8334
   Plan length: 38 step(s).
   Expanded 2346 state(s).
-  Search time: 15.549870s
+  Search time: 12.539839s
