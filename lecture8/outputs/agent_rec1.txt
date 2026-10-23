@@ -1,0 +1,45 @@
+date: 2026-10-17 15:08 EDT
+demo: agent_rec1 (lecture 8): orchestrator.py --runs 2,1
+trial file: config/l8_trial.yaml; user config: config/l8_user_config.yaml; wall limit: 1800 s
+model (as the API reports it): gemini-3.5-flash-lite
+venv: Python 3.12.3 | google-genai 2.31.0 | mcp 2.3.0
+image: enpm663-spring-2027-skills-dev, FROM nistariac/ariac2025@sha256:549afee86b9775115c135fb0d22d6f13c8c7e2794f983bdb6dd8c3698185b244
+ARIAC source: 0c3e722 2025.3.5
+skills package: 71576c5 on plan3-task2; code outside sim_tests/ identical to 6fa0563 (git diff 6fa0563 71576c5 is empty there)
+---
+ARIAC READY 17 wall s after the wait began
+competition started; skills ready (2 wall s)
+=== Run 2 (scripted model: fixed replies) ===
+goal:   Put one Li-Ion cell from the conveyor into agv1 slot 1. Test its voltage on tester 1 first.
+obs 0:  t=1.9 s | tester 1 0.00 V OPERATIONAL | tester 2 -0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 NOTHING
+call 1: 1 messages; scripted
+  model:  robot2_pick_from_tester({"tester": 1})
+  orch:   {"error": "refused: tester 1 is empty (0.00 V)"}
+obs 1:  t=2.8 s | tester 1 0.04 V OPERATIONAL | tester 2 -0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 NOTHING
+call 2: 3 messages; scripted
+  model:  robot2_pick_from_tester({"tester": 1})
+  orch:   {"error": "refused: tester 1 is empty (0.04 V)"}
+stop: 2 invalid outputs in a row
+=== Run 1 (Gemini, model requested gemini-3.5-flash-lite) ===
+goal:   Put one Li-Ion cell from the conveyor into agv1 slot 1. Test its voltage on tester 1 first.
+obs 0:  t=3.9 s | tester 1 -0.04 V OPERATIONAL | tester 2 0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 NOTHING
+call 1: 1 messages; 1264 in, 16 out tokens; 0.85 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 22.9, "report": "Passing inspection report received. Door will open for cell."}
+obs 1:  t=15.5 s | tester 1 -0.01 V OPERATIONAL | tester 2 0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 CELL, robot 2 NOTHING
+call 2: 3 messages; 1535 in, 19 out tokens; 0.61 s
+  model:  robot1_place_on_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 25.0}
+obs 2:  t=25.9 s | tester 1 3.54 V OPERATIONAL | tester 2 0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 NOTHING
+call 3: 5 messages; 1788 in, 19 out tokens; 0.81 s
+  model:  robot2_pick_from_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 19.4}
+obs 3:  t=34.9 s | tester 1 -0.01 V OPERATIONAL | tester 2 0.02 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 CELL
+call 4: 7 messages; 2045 in, 24 out tokens; 0.80 s
+  model:  robot2_place_in_slot({"agv": 1, "slot": 1})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 9.0}
+obs 4:  t=39.4 s | tester 1 -0.03 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 1--- | robot 1 NOTHING, robot 2 NOTHING
+call 5: 9 messages; 2309 in, 1 out tokens; 0.63 s
+  model:  text 'done'
+stop: goal reached
+--- exit status 0

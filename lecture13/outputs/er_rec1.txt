@@ -1,0 +1,55 @@
+date: 2026-10-18 05:24:53 EDT
+session: er_rec1 (lecture 13): er_session.py config/l13_trial.yaml config/l13_user_config.yaml 12; wall limit: 1800 s
+model (as the API reports it): gemini-robotics-er-2-preview
+Recorded once, on 2026-10-18, with gemini-robotics-er-2-preview. A rerun gives different answers.
+venv: Python 3.12.3 | google-genai 2.31.0 | jsonschema 4.26.0
+image: enpm663-spring-2027-skills-dev
+ARIAC source: 0c3e722 2025.3.5
+---
+ARIAC launch started (pid 1074994), log_cell_info:=true
+ARIAC READY 17 wall s after the launch
+feed Li-Ion: True: Starting cell feed with li-ion cells
+c01: edge at 1.20 s, image at 3.33 s sim, cell center at x = 0.803 m; 1920 x 1080 rgb8
+c02: edge at 11.20 s, image at 13.33 s sim, cell center at x = 0.803 m; 1920 x 1080 rgb8
+c03: edge at 21.20 s, image at 23.33 s sim, cell center at x = 0.803 m; 1920 x 1080 rgb8
+c04: edge at 31.20 s, image at 33.66 s sim, cell center at x = 0.836 m; 1920 x 1080 rgb8
+c05: edge at 41.20 s, image at 43.33 s sim, cell center at x = 0.802 m; 1920 x 1080 rgb8
+c06: edge at 51.20 s, image at 53.33 s sim, cell center at x = 0.802 m; 1920 x 1080 rgb8
+c07: edge at 61.20 s, image at 63.33 s sim, cell center at x = 0.802 m; 1920 x 1080 rgb8
+c08: edge at 71.20 s, image at 73.33 s sim, cell center at x = 0.802 m; 1920 x 1080 rgb8
+c09: edge at 81.20 s, image at 83.49 s sim, cell center at x = 0.819 m; 1920 x 1080 rgb8
+c10: edge at 91.20 s, image at 93.32 s sim, cell center at x = 0.802 m; 1920 x 1080 rgb8
+c11: edge at 101.20 s, image at 103.46 s sim, cell center at x = 0.815 m; 1920 x 1080 rgb8
+c12: edge at 111.20 s, image at 113.42 s sim, cell center at x = 0.812 m; 1920 x 1080 rgb8
+feed stop: True: Stopping cell feed.
+captured 12 of 12 cells in 271 wall s
+cell_info.txt: 12 of 12 cells logged
+model calls: gemini-robotics-er-2-preview, one per image, no retry
+c01 (6.39 s, HTTP 200): ```json
+{"defective": true, "defects": [{"type": "BULGE", "point": [380, 383]}]}
+```
+c02 (6.92 s, HTTP 200): ```json
+{"defective": true, "defects": [{"type": "DENT", "point": [735, 444]}]}
+```
+c03 (4.16 s, HTTP 200): ```json
+{"defective": false, "defects": []}
+```
+c04 (5.26 s, HTTP 200): ```json
+{"defective": true, "defects": [{"type": "DENT", "point": [635, 260]}]}
+```
+c05 (4.51 s, HTTP 200): ```json
+{"defective": false, "defects": []}
+```
+c06 (5.11 s, HTTP 200): ```json
+{"defective": true, "defects": [{"type": "BULGE", "point": [380, 390]}]}
+```
+c07 (4.14 s, HTTP 200): ```json
+{"defective": false, "defects": []}
+```
+c08 (3.86 s, HTTP 200): ```json
+{"defective": false, "defects": []}
+```
+c09 (36.14 s, HTTP 429): SecondRequest: c09: the SDK tried to send the call again; no retry is allowed
+stop: HTTP 429; the other cells are not sent
+calls answered: 8 of 12
+--- exit status 0, 368 wall s on the host

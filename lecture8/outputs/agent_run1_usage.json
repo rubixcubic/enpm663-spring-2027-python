@@ -1,0 +1,11 @@
+{
+ "recording": "../outputs/raw/agent_rec1/raw",
+ "calls": 5,
+ "first_input": 1264,
+ "last_input": 2309,
+ "mean_output": 15.8,
+ "input_total": 8941,
+ "output_total": 79,
+ "billed_output_total": 79,
+ "cost": 0.00288
+}

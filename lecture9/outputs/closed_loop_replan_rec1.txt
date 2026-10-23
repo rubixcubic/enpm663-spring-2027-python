@@ -1,0 +1,130 @@
+date: 2026-10-17 19:33 EDT
+demo: closed_loop_replan_rec1 (lecture 9): closed_loop.py --policy replan --vlm-after
+trial file: config/l9_trial.yaml; user config: config/l9_user_config.yaml; wall limit: 3600 s
+model (as the API reports it): gemini-3.5-flash-lite
+venv: Python 3.12.3 | google-genai 2.31.0 | mcp 2.3.0
+image: enpm663-spring-2027-skills-dev, FROM nistariac/ariac2025@sha256:549afee86b9775115c135fb0d22d6f13c8c7e2794f983bdb6dd8c3698185b244
+ARIAC source: 0c3e722 2025.3.5
+skills package: 71576c5 on plan3-task2; code outside sim_tests/ identical to 6fa0563 (git diff 6fa0563 71576c5 is empty there)
+---
+ARIAC READY 17 wall s after the wait began
+competition started; skills ready (2 wall s)
+=== Closed loop, policy replan (Gemini, model requested gemini-3.5-flash-lite) ===
+goal:   Fill all four slots of agv1 with Li-Ion cells, each tested on a voltage tester first. Either tester may be used.
+obs 0:  t=1.6 s | tester 1 -0.00 V OPERATIONAL | tester 2 0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 NOTHING
+call 1: 1 messages; 1266 in, 16 out tokens; 0.89 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 22.0, "report": "Passing inspection report received. Door will open for cell."}
+obs 1:  t=13.1 s | tester 1 0.01 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 CELL, robot 2 NOTHING
+call 2: 3 messages; 1535 in, 19 out tokens; 0.77 s
+  model:  robot1_place_on_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 27.3}
+obs 2:  t=23.8 s | tester 1 3.54 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 NOTHING
+call 3: 5 messages; 1788 in, 19 out tokens; 0.84 s
+  model:  robot2_pick_from_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 19.5}
+obs 3:  t=32.7 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots ---- | robot 1 NOTHING, robot 2 CELL
+call 4: 7 messages; 2041 in, 24 out tokens; 0.71 s
+  model:  robot2_place_in_slot({"agv": 1, "slot": 1})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 9.8}
+obs 4:  t=37.1 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 -0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 1--- | robot 1 NOTHING, robot 2 NOTHING
+call 5: 9 messages; 2303 in, 16 out tokens; 0.78 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 22.9, "report": "Passing inspection report received. Door will open for cell."}
+obs 5:  t=48.2 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 1--- | robot 1 CELL, robot 2 NOTHING
+call 6: 11 messages; 2578 in, 19 out tokens; 0.74 s
+  model:  robot1_place_on_tester({"tester": 2})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 26.9}
+obs 6:  t=59.0 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 3.44 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 1--- | robot 1 NOTHING, robot 2 NOTHING
+call 7: 13 messages; 2843 in, 19 out tokens; 0.88 s
+  model:  robot2_pick_from_tester({"tester": 2})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 19.9}
+obs 7:  t=68.1 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 0.03 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 1--- | robot 1 NOTHING, robot 2 CELL
+call 8: 15 messages; 3104 in, 24 out tokens; 0.81 s
+  model:  robot2_place_in_slot({"agv": 1, "slot": 2})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 9.3}
+obs 8:  t=72.8 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 12-- | robot 1 NOTHING, robot 2 NOTHING
+call 9: 17 messages; 3383 in, 16 out tokens; 0.95 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 21.2, "report": "Passing inspection report received. Door will open for cell."}
+obs 9:  t=83.9 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 12-- | robot 1 CELL, robot 2 NOTHING
+call 10: 19 messages; 3667 in, 19 out tokens; 0.77 s
+  model:  robot1_place_on_tester({"tester": 2})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 24.7}
+obs 10:  t=94.8 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 3.65 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 12-- | robot 1 NOTHING, robot 2 NOTHING
+call 11: 21 messages; 3951 in, 19 out tokens; 0.94 s
+  model:  robot2_pick_from_tester({"tester": 2})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 18.0}
+obs 11:  t=104.2 s | tester 1 -0.01 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 12-- | robot 1 NOTHING, robot 2 CELL
+call 12: 23 messages; 4223 in, 24 out tokens; 0.82 s
+  model:  robot2_place_in_slot({"agv": 1, "slot": 3})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 8.7}
+obs 12:  t=108.8 s | tester 1 -0.01 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 NOTHING
+call 13: 25 messages; 4523 in, 16 out tokens; 1.09 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 20.4, "report": "Passing inspection report received. Door will open for cell."}
+obs 13:  t=120.0 s | tester 1 -0.03 V OPERATIONAL | tester 2 0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 CELL, robot 2 NOTHING
+call 14: 27 messages; 4818 in, 19 out tokens; 0.79 s
+  model:  robot1_place_on_tester({"tester": 2})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 25.0}
+obs 14:  t=130.9 s | tester 1 0.02 V OPERATIONAL | tester 2 3.39 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 NOTHING
+call 15: 29 messages; 5119 in, 19 out tokens; 1.15 s
+  model:  robot2_pick_from_tester({"tester": 2})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 18.9}
+obs 15:  t=140.1 s | tester 1 -0.01 V OPERATIONAL | tester 2 0.02 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 CELL
+call 16: 31 messages; 5401 in, 24 out tokens; 0.84 s
+  model:  robot2_place_in_slot({"agv": 1, "slot": 4})
+  orch:   {"error": "refused: the held cell read 3.39 V, outside 3.4 to 3.8 V"}
+obs 16:  t=141.0 s | tester 1 0.01 V OPERATIONAL | tester 2 -0.03 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 CELL
+call 17: 33 messages; 5699 in, 16 out tokens; 0.79 s
+  model:  robot2_drop_in_recycling({})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 16.4}
+obs 17:  t=148.5 s | tester 1 0.00 V OPERATIONAL | tester 2 0.02 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 NOTHING
+call 18: 35 messages; 5998 in, 16 out tokens; 0.88 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 22.4, "report": "Passing inspection report received. Door will open for cell."}
+obs 18:  t=159.7 s | tester 1 0.00 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 CELL, robot 2 NOTHING
+call 19: 37 messages; 6290 in, 19 out tokens; 0.82 s
+  model:  robot1_place_on_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 24.4}
+obs 19:  t=170.4 s | tester 1 3.36 V OPERATIONAL | tester 2 -0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 NOTHING
+call 20: 39 messages; 6598 in, 19 out tokens; 1.48 s
+  model:  robot2_pick_from_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 23.4}
+obs 20:  t=181.5 s | tester 1 -0.01 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 CELL
+call 21: 41 messages; 6875 in, 16 out tokens; 0.73 s
+  model:  robot2_drop_in_recycling({})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 17.5}
+obs 21:  t=188.8 s | tester 1 0.02 V OPERATIONAL | tester 2 0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 NOTHING
+call 22: 43 messages; 7178 in, 16 out tokens; 0.98 s
+  model:  robot1_pick_from_conveyor({})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "caught, closed -0.15 s from the predicted arrival", "attempts": 1, "wall_s": 22.5, "report": "Passing inspection report received. Door will open for cell."}
+obs 22:  t=199.8 s | tester 1 0.03 V OPERATIONAL | tester 2 0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 CELL, robot 2 NOTHING
+call 23: 45 messages; 7466 in, 19 out tokens; 0.74 s
+  model:  robot1_place_on_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 25.9}
+obs 23:  t=210.3 s | tester 1 3.46 V OPERATIONAL | tester 2 -0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 NOTHING
+call 24: 47 messages; 7780 in, 19 out tokens; 0.90 s
+  model:  robot2_pick_from_tester({"tester": 1})
+  result: {"code": "SUCCESS", "holding": "CELL", "message": "done", "attempts": 1, "wall_s": 24.1}
+obs 24:  t=221.1 s | tester 1 0.01 V OPERATIONAL | tester 2 -0.00 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 123- | robot 1 NOTHING, robot 2 CELL
+call 25: 49 messages; 8054 in, 24 out tokens; 1.10 s
+  model:  robot2_place_in_slot({"agv": 1, "slot": 4})
+  result: {"code": "SUCCESS", "holding": "NOTHING", "message": "done", "attempts": 1, "wall_s": 9.3}
+obs 25:  t=225.8 s | tester 1 -0.02 V OPERATIONAL | tester 2 0.01 V OPERATIONAL | conveyor OPERATIONAL | agv1 INSPECTION slots 1234 | robot 1 NOTHING, robot 2 NOTHING
+call 26: 51 messages; 8380 in, 1 out tokens; 0.96 s
+  model:  text 'done'
+stop: goal reached
+kit total 14.09 V (3.54 + 3.44 + 3.65 + 3.46); window 14.25 to 14.55 V: OUTSIDE
+image: 1280 x 720 rgb8 from /agv1_camera/image, saved as vlm_tray.png
+Live VLM, one image of agv1's tray
+  call: 1377 in, 147 out tokens; 2.02 s
+  attempt 1: valid
+Cross-check before /submit_high_priority_order:
+slot  vlm (conf.)       tray_status  record        verdict
+1     LI_ION (0.95)     occupied     LI_ION 3.54 V agree
+2     LI_ION (0.95)     occupied     LI_ION 3.44 V agree
+3     LI_ION (0.95)     occupied     LI_ION 3.65 V agree
+4     LI_ION (0.95)     occupied     LI_ION 3.46 V agree
+decision: all four slots agree; submit
+--- exit status 0

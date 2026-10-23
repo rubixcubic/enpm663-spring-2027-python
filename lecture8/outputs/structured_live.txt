@@ -1,0 +1,14 @@
+date: 2026-10-17 15:11 EDT
+demo: structured_live (lecture 8): structured_live.py
+wall limit: 600 s
+model (as the API reports it): gemini-3.5-flash-lite
+venv: Python 3.12.3 | google-genai 2.31.0 | mcp 2.3.0
+image: enpm663-spring-2027-skills-dev, FROM nistariac/ariac2025@sha256:549afee86b9775115c135fb0d22d6f13c8c7e2794f983bdb6dd8c3698185b244
+ARIAC source: 0c3e722 2025.3.5
+skills package: 71576c5 on plan3-task2; code outside sim_tests/ identical to 6fa0563 (git diff 6fa0563 71576c5 is empty there)
+---
+user:   {"goal": "ship the kit on agv1", "state": {"agv1": "INSPECTION, 4 cells", "agv2": "INSPECTION, 3 cells", "agv3": "RECYCLING, 0 cells"}}
+model:  move_agv({"agv": 1, "station": "SHIPPING"})
+  -> valid
+tokens: 299 in, 23 out; 0.88 s
+--- exit status 0

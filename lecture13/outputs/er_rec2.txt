@@ -1,0 +1,98 @@
+date: 2026-10-18 10:24:33 EDT
+session: er_rec2 (lecture 13): er_rerun.py er_rec2 er_rec1, on the host
+model (as the API reports it): gemini-robotics-er-2-preview
+Recorded once, on 2026-10-18, with gemini-robotics-er-2-preview. A rerun gives different answers.
+venv: Python 3.12.3 | google-genai 2.31.0 | httpx 0.28.1 | jsonschema 4.26.0
+---
+images: outputs/raw/er_rec1/c01.png to c12.png, saved by the er_rec1 session (no simulation in this run)
+c01.png sha256 0864a59894c25bf5dd1ae9e939997f9232c0a9a46402fc5cefae22af7e7236e7
+c02.png sha256 66727ddbc616f5bf1a0b4d0a83c1afd17a12ff0d917b7aa3f7260f744d101def
+c03.png sha256 8996651133841300d06c908df2926aca8e7809fe97e6806ec1e6da1ef59b5b4f
+c04.png sha256 3acfc22637d1a6dd8801a78be10be4c4ff3be3531abd7323d9105cae61b45d0f
+c05.png sha256 df4c41afffa467a661190e1a46436189f0c92d05d4a59d349b61903205f173d4
+c06.png sha256 ade5b42fc8cec6cf5a7b2ba14dfe85791da97e649aed2c632cb60dfa59b7b1aa
+c07.png sha256 891d91ff37e00ead599cc11244b847fe0336363e59e16c963a669c19fd667dc1
+c08.png sha256 99056c58fe1ab5a463cfb9a8cfe23a520b9cc55b038d7be560368f0b87a7f2c0
+c09.png sha256 ca5ceae69e9735107158b816cf31cf2722fb763a24595cd36bd286d4a5bf303f
+c10.png sha256 4668fdff90b4fdcdc5cbd6e20246c73c2c2a93ea9b6d249e4103061e8cde12e3
+c11.png sha256 88d76b25562f399ba828b2fb1839fdcbdceb8e9c3e84c4139a49e41d56a0b3a9
+c12.png sha256 b06ec75f3e2908e7a5fc54a3fe73664bbded91ba131c97a3a920782374422748
+model calls: gemini-robotics-er-2-preview, one per image, no retry, 13 s from one call's start to the next
+request adds: response_format type text, mime_type application/json, schema er_demo.ANSWER_SCHEMA; store False
+c01 (4.19 s, HTTP 200): {
+  "defective": true,
+  "defects": [
+    {
+      "type": "BULGE",
+      "point": [380, 384]
+    }
+  ]
+}
+c02 (4.41 s, HTTP 200): {
+  "defective": true,
+  "defects": [
+    {
+      "type": "BULGE",
+      "point": [735, 445]
+    }
+  ]
+}
+c03 (3.28 s, HTTP 200): {
+  "defective": false,
+  "defects": []
+}
+c04 (5.44 s, HTTP 200): {
+  "defective": true,
+  "defects": [
+    {
+      "type": "DENT",
+      "point": [633, 255]
+    }
+  ]
+}
+c05 (3.91 s, HTTP 200): {
+  "defective": false,
+  "defects": []
+}
+c06 (3.53 s, HTTP 200): {
+  "defective": true,
+  "defects": [
+    {
+      "type": "BULGE",
+      "point": [380, 390]
+    }
+  ]
+}
+c07 (2.90 s, HTTP 200): {"defective": false, "defects": []}
+c08 (2.94 s, HTTP 200): {
+  "defective": false,
+  "defects": []
+}
+c09 (3.91 s, HTTP 200): {
+  "defective": false,
+  "defects": []
+}
+c10 (3.78 s, HTTP 200): {
+  "defective": true,
+  "defects": [
+    {
+      "type": "BULGE",
+      "point": [366, 417]
+    }
+  ]
+}
+c11 (2.98 s, HTTP 200): {
+  "defective": false,
+  "defects": []
+}
+c12 (4.00 s, HTTP 200): {
+  "defective": true,
+  "defects": [
+    {
+      "type": "BULGE",
+      "point": [718, 447]
+    }
+  ]
+}
+calls answered: 12 of 12
+--- exit status 0, 147 wall s
