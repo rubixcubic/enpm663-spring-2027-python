@@ -10,7 +10,7 @@ FD="$("${PY[@]}" -c 'import os, up_fast_downward as u
 print(os.path.join(os.path.dirname(u.__file__), "downward",
                    "fast-downward.py"))')"
 
-echo "skipped versions.txt: compares a system Python against a venv Python; both are the same uv environment here"
+echo "skipped versions.txt: compares a system Python against a venv Python; both are the same uv environment here (outputs: versions.txt)"
 
 "${PY[@]}" plan_kit.py > $OUT/plan_kit.txt 2>&1
 "${PY[@]}" validate_plan.py > $OUT/validate_plan.txt 2>&1

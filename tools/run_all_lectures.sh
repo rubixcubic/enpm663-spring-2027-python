@@ -51,7 +51,7 @@ for lec in lecture*/; do
     UV_PROJECT_ENVIRONMENT="$ROOT/.venv" \
     bash "$SCRATCH/$lec/run_repo.sh" > "$SCRATCH/$lec.log" 2>&1
   status=$?
-  diff -r -x raw -x versions.txt "$lec/outputs" "$SCRATCH/$lec/outputs" > "$SCRATCH/$lec.diff"
+  diff -r -x raw "$lec/outputs" "$SCRATCH/$lec/outputs" > "$SCRATCH/$lec.diff"
   /usr/bin/python3 - "$lec" "$SCRATCH/$lec.diff" "$SCRATCH/$lec.log" tools/noise.txt "$status" <<'PYEOF' >> "$REPORT"
 import pathlib
 import re

@@ -8,9 +8,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$(dirname "$0")/code"
 PY=(uv run --project "$ROOT" --quiet python)
 
-"${PY[@]}" -c \
-  "import sys; from importlib.metadata import version as v; print('Python', sys.version.split()[0], 'google-genai', v('google-genai'), 'httpx', v('httpx'), 'jsonschema', v('jsonschema'))" \
-  > ../outputs/versions.txt
+echo "skipped versions.txt: measured in the L13 venv with jsonschema 4.26.0; this environment pins 4.10.3 (outputs: versions.txt)"
 "${PY[@]}" er_demo.py > ../outputs/er_demo.txt 2>&1
 "${PY[@]}" score_er.py --scripted > ../outputs/score_er.txt 2>&1
 for rec in er_rec1 er_rec2; do

@@ -59,9 +59,12 @@ repository's own runner: it uses the system Python, and in some lectures
 ROS 2. It is not for students; use `run_repo.sh` instead.
 
 The files in `outputs/` are what the lecture slides quote. Rerunning a
-lecture with `run_repo.sh` reproduces its outputs byte for byte, except the
-files listed in `tools/noise.txt` (measured times that change from run to
-run).
+lecture with `run_repo.sh` reproduces every output it writes byte for byte,
+except the files listed in `tools/noise.txt` (measured times that change from
+run to run). A step that `run_repo.sh` cannot run here prints a `skipped ...`
+line and leaves that step's committed outputs in place. Lecture 13's outputs
+were measured under jsonschema 4.26.0; its other outputs are identical under
+this project's jsonschema 4.10.3, so only its `versions.txt` is skipped.
 
 ### No API calls by default
 
