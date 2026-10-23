@@ -33,7 +33,8 @@ repo has a copy of it, and to "slides" only when it does not.
 The outputs/ entries and code/run_all.sh are not generated here: they were added to
 the manifest by hand, after checking which outputs a managed script writes. A rerun
 reads the existing tools/manifest.toml and keeps each of those entries in the list
-("both" or "slides") it was in. Each list is written sorted.
+("both" or "slides") it was in, except an entry named in NOT_CARRIED. Each list is
+written sorted.
 
 classification.txt gets one line per script: lecture, path, kind (managed, ROS,
 error or excluded), and the detail (the missing names, "ok" for managed, or the
@@ -246,8 +247,17 @@ for lecture in sorted(SLIDES.glob("lecture*"), key=lambda p: int(re.sub(r"\D", "
     manifest[lecture.name] = {"both": both, "slides": slides_only}
 
 
-def carried(rel: str) -> bool:
+# Hand-added entries a rerun drops: they were taken out of the manifest on purpose.
+# Keys are paths relative to SLIDES.
+NOT_CARRIED = {
+    "lecture13/code/run_all.sh": "runs tests/test_run_er_session.sh, which is not managed",
+}
+
+
+def carried(lecture: str, rel: str) -> bool:
     """True for an entry this script does not generate, so a rerun keeps it."""
+    if f"{lecture}/{rel}" in NOT_CARRIED:
+        return False
     return rel.startswith("outputs/") or rel == "code/run_all.sh"
 
 
@@ -256,7 +266,7 @@ old = tomllib.loads(manifest_path.read_text()) if manifest_path.is_file() else {
 for lecture, entry in old.items():
     new = manifest.setdefault(lecture, {"both": [], "slides": []})
     for key in ("both", "slides"):
-        new[key] += [rel for rel in entry.get(key, []) if carried(rel) and rel not in new[key]]
+        new[key] += [rel for rel in entry.get(key, []) if carried(lecture, rel) and rel not in new[key]]
 for entry in manifest.values():
     for key in ("both", "slides"):
         entry[key].sort()

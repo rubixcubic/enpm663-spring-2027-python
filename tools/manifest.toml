@@ -265,7 +265,6 @@ slides = []
 both = [
     "code/er_demo.py",
     "code/er_rerun.py",
-    "code/run_all.sh",
     "code/score_er.py",
     "outputs/er_demo.txt",
     "outputs/er_rec1.txt",
