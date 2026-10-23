@@ -1,0 +1,15 @@
+Sequence move_cell (memory=True)
+  1: pick=SUCCESS place=SUCCESS update=SUCCESS -> SUCCESS
+  2: pick=SUCCESS place=FAILURE update=INVALID -> FAILURE
+  3: pick=SUCCESS place=RUNNING update=INVALID -> RUNNING
+Selector place_or_recycle (memory=False)
+  4: place_if_good=SUCCESS recycle=INVALID -> SUCCESS
+  5: place_if_good=FAILURE recycle=SUCCESS -> SUCCESS
+  6: place_if_good=FAILURE recycle=FAILURE -> FAILURE
+Decorators
+  Inverter: child=SUCCESS -> FAILURE
+  Inverter: child=FAILURE -> SUCCESS
+  Inverter: child=RUNNING -> RUNNING
+  FailureIsSuccess: child=FAILURE -> SUCCESS
+  Timeout tick 1: child=RUNNING -> RUNNING
+  Timeout tick 2, after 0.3 s: child=INVALID -> FAILURE

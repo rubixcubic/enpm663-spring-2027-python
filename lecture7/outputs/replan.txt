@@ -1,0 +1,53 @@
+plan 1, 11 steps:
+   1 (pick-from-tester inspection_robot_2 c1 tester1)
+   2 (place-in-slot inspection_robot_2 c1 agv1 s1)
+   3 (pick-from-tester inspection_robot_2 c2 tester2)
+   4 (place-in-slot inspection_robot_2 c2 agv1 s2)
+   5 (check-voltage c3 tester1)
+   6 (pick-from-tester inspection_robot_2 c3 tester1)
+   7 (place-in-slot inspection_robot_2 c3 agv1 s3)
+   8 (check-voltage c4 tester2)
+   9 (pick-from-tester inspection_robot_2 c4 tester2)
+  10 (place-in-slot inspection_robot_2 c4 agv1 s4)
+  11 (move-agv agv1 inspection shipping)
+run plan 1:
+  1 pick-from-tester SUCCESS
+  2 place-in-slot SUCCESS
+  3 pick-from-tester SUCCESS
+  4 place-in-slot SUCCESS
+  5 check-voltage FAILURE
+    verify: expected c3 in 3.4 V to 3.8 V
+stopped between steps; replans 1 of 3
+new problem, facts that changed:
+  + (in-slot c1 agv1 s1)
+  + (in-slot c2 agv1 s2)
+  + (on-tester c3 tester1)
+  + (on-tester c4 tester2)
+  + (voltage-bad c3)
+  - (on-tester c1 tester1)
+  - (on-tester c2 tester2)
+  - (queued c3 tester1)
+  - (queued c4 tester2)
+  - (slot-free agv1 s1)
+  - (slot-free agv1 s2)
+plan 2, 9 steps:
+   1 (pick-from-tester inspection_robot_2 c3 tester1)
+   2 (recycle inspection_robot_2 c3)
+   3 (check-voltage c4 tester2)
+   4 (pick-from-tester inspection_robot_2 c4 tester2)
+   5 (place-in-slot inspection_robot_2 c4 agv1 s3)
+   6 (check-voltage c5 tester1)
+   7 (pick-from-tester inspection_robot_2 c5 tester1)
+   8 (place-in-slot inspection_robot_2 c5 agv1 s4)
+   9 (move-agv agv1 inspection shipping)
+run plan 2:
+  1 pick-from-tester SUCCESS
+  2 recycle SUCCESS
+  3 check-voltage SUCCESS
+  4 pick-from-tester SUCCESS
+  5 place-in-slot SUCCESS
+  6 check-voltage SUCCESS
+  7 pick-from-tester SUCCESS
+  8 place-in-slot SUCCESS
+  9 move-agv SUCCESS
+done: agv1 shipped c1 c2 c4 c5 (14.39 V), replans 1

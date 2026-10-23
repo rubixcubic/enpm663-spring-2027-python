@@ -1,0 +1,5 @@
+20 cells: TP 4, FP 2, FN 1, TN 13
+precision = 4/6 = 0.67
+recall    = 4/5 = 0.80
+position error (mm): 5.0 5.4 6.3 3.6 7.2 3.6 8.9 3.6
+mean 5.5 mm, spread (sample SD) 1.9 mm, largest 8.9 mm

@@ -1,0 +1,17 @@
+Scripted stand-in VLM (a real model's answers vary)
+Weak prompt: 'Describe this image.'
+  | The image shows a gray tray with four cylindrical battery cells.
+  | Most look the same. One near the right may be a different type.
+  check: not JSON: Expecting value
+Structured prompt with the schema:
+  attempt 1: rejected
+    slots.0.slot: 0 is less than the minimum of 1
+  re-prompt with: 'Your last reply failed: ...'
+  attempt 2: valid
+Cross-check before /submit_high_priority_order:
+slot  vlm (conf.)       tray_status  record        verdict
+1     NIMH (0.9)        occupied     NIMH 1.21 V   agree
+2     NIMH (0.85)       occupied     NIMH 1.18 V   agree
+3     LI_ION (0.6)      occupied     NIMH 1.24 V   DISAGREE: type
+4     empty (0.7)       occupied     NIMH 1.22 V   DISAGREE: occupancy
+decision: do not submit; slots 3 and 4 disagree

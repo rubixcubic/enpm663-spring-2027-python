@@ -1,0 +1,12 @@
+synchronise=True
+  tick 1: tester OPERATIONAL    ok=SUCCESS wait=RUNNING -> RUNNING
+  tick 2: tester MALFUNCTIONING ok=SUCCESS wait=RUNNING -> RUNNING
+  tick 3: tester MALFUNCTIONING ok=SUCCESS wait=RUNNING -> RUNNING
+  tick 4: tester MALFUNCTIONING ok=SUCCESS wait=RUNNING -> RUNNING
+  tick 5: tester MALFUNCTIONING ok=SUCCESS wait=SUCCESS -> SUCCESS
+  tester_ok checked 1 times
+  average of 5 readings: -0.078 V
+synchronise=False
+  tick 1: tester OPERATIONAL    ok=SUCCESS wait=RUNNING -> RUNNING
+  tick 2: tester MALFUNCTIONING ok=FAILURE wait=INVALID -> FAILURE
+  tester_ok checked 2 times

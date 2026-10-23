@@ -1,0 +1,11 @@
+inSlot(c1, agv1, s1): accepted
+  c1 is a LiIonCell, a kind of Cell
+atStation(agv1, inspection): accepted
+testedBy(c3, voltage_tester_2): accepted
+  c3 is a LiIonCell, a kind of Cell
+inSlot(c2, inspection, s2): rejected
+  inspection is a Station, not an AGV
+atStation(c1, inspection): rejected
+  c1 is a LiIonCell, not an AGV
+partOf(inspection_robot_1, kit1): rejected
+  inspection_robot_1 is an InspectionRobot, not a Cell

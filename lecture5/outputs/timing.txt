@@ -1,0 +1,5 @@
+PC: Intel(R) Core(TM) i9-14900HX; Python 3.12.3, NumPy 1.26.4
+400 points, best of 3 x 200 runs, ms per scan, 5 repeats
+  loop A, NumPy per point   0.909  0.777  0.775  0.778  0.775
+  loop B, plain Python      0.096  0.096  0.096  0.096  0.096
+  all at once, NumPy        0.013  0.013  0.013  0.013  0.012

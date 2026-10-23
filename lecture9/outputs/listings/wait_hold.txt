@@ -1,0 +1,12 @@
+  model:  robot2_pick_from_tester({"tester": 1})
+obs 5:  t=38.2 s | tester 1 -1.00 V MALFUNCTIONING | tester 2 0.01 V ...
+  model:  wait({"seconds": 5})
+  model:  read_testers({})
+  model:  wait({"seconds": 10})
+  model:  read_testers({})
+  model:  wait({"seconds": 20})
+  model:  read_testers({})
+  model:  wait({"seconds": 30})
+obs 12:  t=112.6 s | tester 1 0.00 V OPERATIONAL | tester 2 -0.01 V  ...
+  model:  robot2_place_in_slot({"agv": 1, "slot": 1})
+obs 13:  t=117.2 s | tester 1 -0.01 V OPERATIONAL | tester 2 0.01 V  ...

@@ -1,0 +1,8 @@
+submit-kit without (kit-checked ?a): 19 steps
+ 1. move-agv(agv1, inspection, shipping)
+ 2. submit-kit(agv1)
+ 3. move-agv(agv1, shipping, inspection)
+pick-from-conveyor without (not (hand-free ?r)): 19 steps
+ 4. place-on-tester(inspection_robot_1, c2, tester2)
+ 5. pick-from-conveyor(inspection_robot_1, c3)
+ 6. pick-from-conveyor(inspection_robot_1, c4)

@@ -1,0 +1,10 @@
+tick 1 at 0.0 s
+        timeout_0.5s: RUNNING, pick_or_report: RUNNING
+tick 2 at 0.2 s
+        timeout_0.5s: RUNNING, pick_or_report: RUNNING
+tick 3 at 0.4 s
+        timeout_0.5s: RUNNING, pick_or_report: RUNNING
+tick 4 at 0.6 s
+        pick_cell: stopped by its parent
+        timeout_0.5s: FAILURE, pick_or_report: SUCCESS
+        pick_or_report finished through report_to_planner

@@ -1,0 +1,6 @@
+needs numeric planning: True
+warning: We cannot establish whether Fast Downward can solve this problem!
+status: INTERNAL_ERROR
+plan: None
+log: Reason: Invalid requirement. Got: :numeric-fluents
+log: translate exit code: 31

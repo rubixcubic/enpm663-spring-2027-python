@@ -1,0 +1,12 @@
+1 submit_report(passed)    c4.inspection = passed  [your report]
+2 beam: object_detected    c4.location = at beam  [inferred]
+3 pick_from_conveyor: OK   c4.location = gripper 1  [inferred]
+4 place_on_tester(1): OK   /tester1/cell = c4  [inferred]
+5 tester 1: 5 readings, 3.553 V to 3.672 V  [observed]
+5 average of 5             /tester1/voltage = 3.599  [inferred]
+  3.599 V inside 3.47 V to 3.59 V: False
+  total 14.469 V inside 14.25 V to 14.55 V: True
+  0.081 V from an edge, under the 0.09 V margin: True
+6 pick_from_tester(1): OK  /tester1/cell = None  [inferred]
+7 recycle_cell: OK         c4.location = recycling bin  [inferred]
+kit on agv1: 3 cells, 10.87 V; slot 4 still open: True

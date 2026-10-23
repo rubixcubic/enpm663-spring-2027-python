@@ -1,0 +1,5 @@
+A batch of 20 runs passes at 19 of 20 or better
+  p = 0.80: 0.012 + 0.058 = 0.07 (simulated 0.07)
+  p = 0.90: 0.122 + 0.270 = 0.39 (simulated 0.39)
+  p = 0.95: 0.358 + 0.377 = 0.74 (simulated 0.74)
+  p = 0.99: 0.818 + 0.165 = 0.98 (simulated 0.98)

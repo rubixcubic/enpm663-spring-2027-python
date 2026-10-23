@@ -1,0 +1,4 @@
+4 cells  fast-downward      SOLVED_SATISFICING steps  19    0.15 s
+4 cells  fast-downward-opt  SOLVED_OPTIMALLY   steps  19    0.15 s
+8 cells  fast-downward      SOLVED_SATISFICING steps  38    0.56 s
+8 cells  fast-downward-opt  SOLVED_OPTIMALLY   steps  38   14.78 s

@@ -1,0 +1,7 @@
+cells (true V): 3.73 3.74 3.61 3.52 3.49 3.60 3.50 3.46 3.62 3.61
+plan only, done at 66 s:
+  kit rejected: total 14.60 V is outside 14.25 to 14.55 V
+react only, done at 70 s:
+  kit rejected: total 14.60 V is outside 14.25 to 14.55 V
+three layers, done at 102 s:
+  kit accepted: total 14.46 V

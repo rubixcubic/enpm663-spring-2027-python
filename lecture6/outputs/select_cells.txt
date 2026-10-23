@@ -1,0 +1,19 @@
+3 cells at 3.75 V: rest must sum to 3.00 to 3.30 V; can finish: False
+2 cells at 3.75 V: rest must sum to 6.75 to 7.05 V; can finish: True
+look ahead: False
+  c1 3.75 V: agv1 slot 1; rest must sum to 10.50 to 10.80 V
+  c2 3.78 V: agv1 slot 2; rest must sum to 6.72 to 7.02 V
+  c3 3.72 V: agv1 slot 3; rest must sum to 3.00 to 3.30 V
+  kit total 11.25 V: lost, agv1 to recycling
+look ahead: True
+  c1 3.75 V: agv1 slot 1; rest must sum to 10.50 to 10.80 V
+  c2 3.78 V: agv1 slot 2; rest must sum to 6.72 to 7.02 V
+  c3 3.72 V: agv2 (blocks agv1)
+  c4 3.86 V: recycle (out of range)
+  c5 3.45 V: agv1 slot 3; rest must sum to 3.27 to 3.57 V
+  c6 3.52 V: agv1 slot 4; kit full
+  kit total 14.50 V: in range by the averages
+  goal: (in-slot c1 agv1 s1)
+  goal: (in-slot c2 agv1 s2)
+  goal: (in-slot c5 agv1 s3)
+  goal: (in-slot c6 agv1 s4)

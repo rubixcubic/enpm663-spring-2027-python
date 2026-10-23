@@ -1,0 +1,15 @@
+tool: robot1_move_home
+tool: robot1_pick_from_conveyor
+tool: robot1_place_on_tester
+    tester: {"enum": [1, 2], "title": "Tester", "type": "integer"}
+tool: robot2_move_home
+tool: robot2_pick_from_tester
+    tester: {"enum": [1, 2], "title": "Tester", "type": "integer"}
+tool: robot2_place_in_slot
+    agv: {"enum": [1, 2, 3], "title": "Agv", "type": "integer"}
+    slot: {"enum": [1, 2, 3, 4], "title": "Slot", "type": "integer"}
+tool: robot2_drop_in_recycling
+tool: read_testers
+tool: read_conveyor
+tool: read_agv
+    agv: {"enum": [1, 2, 3], "title": "Agv", "type": "integer"}

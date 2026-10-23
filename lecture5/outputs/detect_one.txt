@@ -1,0 +1,12 @@
+1 crop:     13508 points in, 2862 kept
+2 separate: one cell on the belt in this run
+3 motion:   points moved back to the first scan's time
+4 fit:      axis x0 = 0.6250 m, y0 = 1.0000 m, radius 10.50 mm
+5 residual: d from -2.33 to 2.12 mm
+6 flag:     116 points with |d| > 0.9 mm
+7, 8:       3 clusters
+found                         truth
+dent    th -0.96 z 18.0 mm (22 pts) | dent    th -1.00 z 18.0 mm  match
+scratch th +1.30 z 38.0 mm (72 pts) | scratch th +1.30 z 38.0 mm  match
+bulge   th -2.23 z 49.8 mm (22 pts) | bulge   th -2.30 z 50.0 mm  match
+last scan that sees the cell: t = 1.25 s after spawn

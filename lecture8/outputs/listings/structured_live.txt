@@ -1,0 +1,4 @@
+user:   {"goal": "ship the kit on agv1", "state": {"agv1": "INSPECTION, 4 cells", "agv2": "INSPECTION, 3 cells", "agv3": "RECYCLING, 0 cells"}}
+model:  move_agv({"agv": 1, "station": "SHIPPING"})
+  -> valid
+tokens: 299 in, 23 out; 0.88 s

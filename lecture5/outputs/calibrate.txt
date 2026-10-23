@@ -1,0 +1,5 @@
+two lidars: 20 good cells, 2863 points per cell
+  largest |d| per cell: 0.53 to 0.79 mm, threshold 0.8 mm
+four lidars: 20 good cells, 5358 points per cell
+  largest |d| per cell: 0.63 to 0.81 mm, threshold 0.9 mm
+used for both layouts: 0.9 mm, the larger of the two

@@ -1,0 +1,8 @@
+model gemini-3.5-flash-lite; prices 0.3 and 2.5 dollars per million tokens (https://ai.google.dev/gemini-api/docs/pricing, read 2026-10-17)
+call   input output billed wall s    cost $
+   1    1264     16     16   0.85  0.000419
+   2    1535     19     19   0.61  0.000508
+   3    1788     19     19   0.81  0.000584
+   4    2045     24     24   0.80  0.000674
+   5    2309      1      1   0.63  0.000695
+total    8941     79     79   3.70  0.002880

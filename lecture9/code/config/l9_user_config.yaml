@@ -1,0 +1,34 @@
+COMPETITOR_NAME: enpm663_lecture_demo
+CONVEYOR_SPEED: 0.1   # m/s; the skills were tested at this speed (skills README, Known limits)
+CELL_FEED_RATE: 0.1
+SENSORS:
+  - NAME: conveyor_beam      # skill_tools.BEAM_TOPIC; max_trigger_age in skills.yaml assumes x = 0.6 m
+    TYPE: break_beam
+    POSE:
+      XYZ: [0.6, 0.95, 0.44]
+      RPY: [0.0, 0.0, pi/2]
+    UPDATE_RATE: 10
+  - NAME: agv1_camera        # vlm_check.CAMERA_TOPIC is /agv1_camera/image (image_plugin.cpp:47)
+    TYPE: camera
+    POSE:
+      # Computed from the four agv1_slotN_frame poses in lecture8/outputs/smoke/smoke_s0.txt
+      # (the smoke test before the recordings, agv1 at INSPECTION):
+      # 1. center: x = (2.0849 + 2.2149 + 2.0850 + 2.2150) / 4 = 2.150 m,
+      #    y = (1.5500 + 1.5501 + 1.4500 + 1.4501) / 4 = 1.500 m
+      # 2. the slots are a 2 x 2 grid; x has the larger span: 2.2150 - 2.0849 = 0.1301 m
+      #    (y: 1.5501 - 1.4500 = 0.1001 m)
+      # 3. image width at height h: 2 x h x tan(0.873 / 2) = 0.9330 x h (tan(0.4365) = 0.4665);
+      #    chosen: the width is twice the x span, so h = 2 x 0.1301 / 0.9330 = 0.279 m
+      #    (the image height then covers 0.9330 x 0.279 x 720 / 1280 = 0.146 m along y)
+      # 4. z = 0.3830 + 0.279 = 0.662 m
+      XYZ: [2.150, 1.500, 0.662]
+      # 5. yaw pi/2 (the slots differ most along world x). With RPY [0, pi/2, pi/2], the
+      #    camera's +x points to world -z, its +y to world -x and its +z to world +y
+      #    (tf_transformations.quaternion_from_euler, as user_config_parser.py uses it).
+      #    If the image's left is the camera's +y and its top the camera's +z, slots 1 and
+      #    2 are the top row, left to right, and slots 3 and 4 the bottom row. An image
+      #    taken after the first cell went into slot 1 showed that cell at the top left.
+      RPY: [0.0, pi/2, pi/2]  # pitch pi/2 points the camera's view axis (+x) down
+    UPDATE_RATE: 30          # the only rate ARIAC accepts for a camera (yaml_validation.py:143)
+    RESOLUTION: 720p         # 1280 x 720 (structures.py Camera._width, _height)
+    FOV: 0.873               # rad, ARIAC's default (user_config_parser.py _get_fov)

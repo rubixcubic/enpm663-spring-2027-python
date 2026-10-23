@@ -1,0 +1,7 @@
+=== Bounded retry, run 1 ===
+  attempt 1: {"agv": 1, "station": "SHIP"}
+    sent back: Rejected (schema: 'SHIP' is not one of ['INSPECTION', 'ASSEMBLY', 'SHIPPING', 'RECYCLING']). Return JSON that fits.
+  attempt 2: {"agv": 2, "station": "SHIPPING"}
+    sent back: Rejected (semantic: agv2 holds 3 of 4 cells). Return JSON that fits.
+  attempt 3: {"agv": 1, "station": "SHIPPING"}
+  result: accepted {"agv": 1, "station": "SHIPPING"}

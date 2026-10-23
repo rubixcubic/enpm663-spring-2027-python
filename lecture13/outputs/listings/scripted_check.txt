@@ -1,0 +1,17 @@
+Raw answer text for c07 (scripted stand-in):
+{"defective": true, "defects": [{"type": "BULGE", "point": [431, 515]}]}
+
+Schema check of every answer:
+  c01 valid     defects: none
+  c02 valid     defects: DENT
+  c03 valid     defects: none
+  c04 valid     defects: none
+  c05 valid     defects: DENT
+  c06 valid     defects: BULGE
+  c07 valid     defects: BULGE
+  c08 valid     defects: none
+  c09 valid     defects: SCRATCH
+  c10 rejected
+      defects.0.type: 'CRACK' is not one of ['DENT', 'SCRATCH', 'BULGE']
+  c11 valid     defects: BULGE
+  c12 valid     defects: none

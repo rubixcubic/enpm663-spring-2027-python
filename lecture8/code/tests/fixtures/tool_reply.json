@@ -1,0 +1,46 @@
+{
+ "candidates": [
+  {
+   "content": {
+    "parts": [
+     {
+      "text": "Robot 2 has been successfully sent to its park pose.",
+      "thought_signature": "EmAKXgFpFH0TUiZ7MvHku0hsT7ZkiNxvVDfxagQUCP-M6fnmyT73HH7hqxyU1kEQUfWK8OiT1PHYEaeurcb87umiYnrWAKpjWbOoKbnEhmg2FMs93-kqUUYvMqYuq-H7OHI="
+     }
+    ],
+    "role": "model"
+   },
+   "finish_reason": "STOP",
+   "index": 0
+  }
+ ],
+ "model_version": "gemini-3.5-flash-lite",
+ "response_id": "OLHTao7SIPme1MkP5pOYqAM",
+ "sdk_http_response": {
+  "headers": {
+   "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+   "content-encoding": "gzip",
+   "content-type": "application/json; charset=UTF-8",
+   "date": "Sat, 17 Oct 2026 17:32:41 GMT",
+   "server": "scaffolding on HTTPServer2",
+   "server-timing": "gfet4t7; dur=700",
+   "transfer-encoding": "chunked",
+   "vary": "Origin, X-Origin, Referer",
+   "x-content-type-options": "nosniff",
+   "x-frame-options": "SAMEORIGIN",
+   "x-gemini-service-tier": "standard",
+   "x-xss-protection": "0"
+  }
+ },
+ "usage_metadata": {
+  "candidates_token_count": 12,
+  "prompt_token_count": 119,
+  "prompt_tokens_details": [
+   {
+    "modality": "TEXT",
+    "token_count": 119
+   }
+  ],
+  "total_token_count": 131
+ }
+}

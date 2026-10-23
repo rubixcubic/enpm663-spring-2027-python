@@ -1,0 +1,30 @@
+# L9 recordings: voltage tester 1 malfunctions while the agent works.
+# Change the ID whenever this file changes (ARIAC refuses a known ID with another file).
+#
+# START_TIME and DURATION, chosen from the measured dry run (outputs/closed_loop_dry.txt,
+# 2026-10-17). A cycle ends at the obs line after its robot2_place_in_slot (sim time t):
+#   cycle 1 ends at obs 4,  t = 36.7 s
+#   cycle 2 ends at obs 8,  t = 71.2 s, so cycle 2 takes 71.2 - 36.7 = 34.5 s
+#   cycle 3 ends at obs 12, t = 105.1 s, so cycle 3 takes 105.1 - 71.2 = 33.9 s
+# 1. START_TIME: 36.7 s rounded down to 10 s gives 30 s. Cycle 1's reading (obs 2, 3.53 V)
+#    came at t = 23.8 s, before 30 s; cycle 2 put its cell on tester 1 from t = 47.6 s on.
+# 2. DURATION: 34.5 + 33.9 = 68.4 s, rounded up to 10 s gives 70 s (about two cycles).
+# 3. START_TIME + DURATION = 100 s, under TIME_LIMIT 3000 s.
+# The tester counts START_TIME from the competition start, and t counts from the
+# simulation start; the competition started before obs 0 (t = 2.7 s), so the malfunction
+# starts between t = 30.0 and 32.7 s.
+ID: LEC90001
+SEED: 1
+DEFECT_RATE: 0.0
+TIME_LIMIT: 3000     # simulation s, chosen: the skills probes' value
+NUM_KITS: 1
+NUM_MODULES: 0
+CHALLENGES:
+  # Keys from the ARIAC 2025 source: competition_manager_plugin.cpp:846-851 reads
+  # START_TIME, DURATION and TESTER as int; trial_schema.json:54-66 requires all three
+  # (TESTER 1 or 2); yaml_validation.py:91-107 refuses START_TIME + DURATION over TIME_LIMIT.
+  # The tester counts START_TIME from the competition start (voltage_tester_plugin.cpp:111).
+  VOLTAGE_TESTER_MALFUNCTIONS:
+    - START_TIME: 30   # simulation s: the end of the dry run's cycle 1, rounded down (above)
+      DURATION: 70     # simulation s: the dry run's cycles 2 and 3, rounded up (above)
+      TESTER: 1

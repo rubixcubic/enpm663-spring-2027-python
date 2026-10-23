@@ -1,0 +1,7 @@
+Cross-check before /submit_high_priority_order:
+slot  vlm (conf.)       tray_status  record        verdict
+1     NIMH (0.9)        occupied     NIMH 1.21 V   agree
+2     NIMH (0.85)       occupied     NIMH 1.18 V   agree
+3     LI_ION (0.6)      occupied     NIMH 1.24 V   DISAGREE: type
+4     empty (0.7)       occupied     NIMH 1.22 V   DISAGREE: occupancy
+decision: do not submit; slots 3 and 4 disagree

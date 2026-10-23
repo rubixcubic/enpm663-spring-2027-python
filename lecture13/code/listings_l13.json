@@ -1,0 +1,18 @@
+{"listings": [
+ {"name": "scripted_request", "parts": [{"source": "er_demo.txt", "from": "Each one:", "to": "}"}]},
+ {"name": "scripted_check", "parts": [{"source": "er_demo.txt", "from": "Raw answer text", "to": "  c12"}]},
+ {"name": "scripted_score", "parts": [{"source": "score_er.txt"}]},
+ {"name": "run1_answers", "width": 130, "parts": [
+   {"source": "er_rec1.txt", "from": "c01 (", "to": "```"},
+   {"text": "..."},
+   {"source": "er_rec1.txt", "from": "c09 (", "to": "calls answered"},
+   {"source": "score_er_rec1.txt", "from": "Cells used:", "lines": 2}]},
+ {"name": "run2_table", "parts": [
+   {"source": "score_er_rec2.txt", "from": "cell  ARIAC", "to": "Cells used"}]},
+ {"name": "run2_rates", "drop": ["  recall: one cell"], "parts": [
+   {"source": "score_er_rec2.txt", "from": "DENT: TP", "lines": 12}]},
+ {"name": "run2_cost", "parts": [
+   {"source": "score_er_rec2.txt", "from": "cell  input", "lines": 1},
+   {"source": "score_er_rec2.txt", "from": "c01    ", "lines": 1},
+   {"source": "score_er_rec2.txt", "from": "all   ", "lines": 2}]}
+]}

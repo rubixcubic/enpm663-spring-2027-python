@@ -1,0 +1,29 @@
+state: robot 1 holds CELL; robot 2 holds CELL (3.55 V)
+       agv1 slot 1 occupied; tester 1 MALFUNCTIONING
+A good call: robot2_place_in_slot({"agv": 1, "slot": 2})
+  accepted
+B made-up tool: robot1_place_in_slot({"agv": 1, "slot": 2})
+  refused at check 1 (tool): unknown tool 'robot1_place_in_slot'
+C slot 5: robot2_place_in_slot({"agv": 1, "slot": 5})
+  refused at check 2: schema: 5 is greater than the maximum of 4
+D made-up argument: robot1_place_on_tester({"tester": 2, "cell": "c9"})
+  refused at check 2: schema: Additional properties are not allowed ('cell' was unexpected)
+E full slot: robot2_place_in_slot({"agv": 1, "slot": 1})
+  refused at check 3 (guard): agv1 slot 1 is occupied
+F broken tester: robot1_place_on_tester({"tester": 1})
+  refused at check 3 (guard): tester 1 is MALFUNCTIONING
+
+Policy run 1: a refused call, then a good one
+  model:  robot2_place_in_slot({"agv": 1, "slot": 5})
+  orch:   refused: schema: 5 is greater than the maximum of 4
+  model:  robot2_place_in_slot({"agv": 1, "slot": 2})
+  result: SUCCESS
+  model:  text 'done'
+  stop: goal reached
+Policy run 2: two refused calls in a row
+  model:  robot2_place_in_slot({"agv": 1, "slot": 5})
+  orch:   refused: schema: 5 is greater than the maximum of 4
+  model:  robot2_place_in_slot({"agv": 1, "slot": 1})
+  orch:   refused: agv1 slot 1 is occupied
+  stop: 2 invalid outputs in a row
+  fall back: robot 2 keeps the cell; the GP3 plan takes the step

@@ -1,0 +1,8 @@
+100000 trials, true voltage 3.78 V
+  one reading above 3.8 V:     0.345
+  average of 10 above 3.8 V:   0.104
+  spread of the average of 10: 0.0158 V
+stream: 17 messages, 12 valid
+   0.00 -0.11  3.71  3.78  3.85  3.72  3.78  3.82 -1.00
+  -1.00 -1.00  3.77  3.78  3.78  3.80  3.75  3.77
+  average of the last 10 valid: 3.782 V -> in range

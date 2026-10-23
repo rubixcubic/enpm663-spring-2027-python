@@ -1,0 +1,13 @@
+tick  1: 1 pick-from-tester RUNNING
+tick  1: retry 1 RUNNING
+tick  2: 1 pick-from-tester FAILURE
+tick  2:   act: GRASP_FAILED
+tick  3: 1 pick-from-tester RUNNING
+tick  4: 1 pick-from-tester FAILURE
+tick  4:   act: GRASP_FAILED
+tick  5: 1 pick-from-tester RUNNING
+tick  6: 1 pick-from-tester FAILURE
+tick  6:   act: GRASP_FAILED
+tick  6: retry 1 FAILURE
+tick  6:   act: GRASP_FAILED
+plan FAILURE after 6 ticks; 3 goals sent

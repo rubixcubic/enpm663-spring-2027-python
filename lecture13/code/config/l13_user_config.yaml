@@ -1,0 +1,45 @@
+# L13 live run: one break beam (timing) and one camera beside the inspection conveyor.
+# Sensor prices from ARIAC 2025 ariac_setup/structures.py (the ARIAC Sensors page gives the
+# same): a camera costs $800 at 1080p and $500 at 720p (Camera.cost); a break beam costs
+# $200 at 10 Hz and $400 at 30 Hz (BreakBeam.cost). This config costs 200 + 800 = $1000.
+COMPETITOR_NAME: enpm663_lecture_demo
+CONVEYOR_SPEED: 0.1   # m/s, as in L8 and L9 (er_session.SPEED assumes this value)
+CELL_FEED_RATE: 0.1   # cells per sim s: one cell every 10 s, 1 m apart at 0.1 m/s, so one
+                      # cell at a time is on the 1 m belt (inspection_conveyor/model.sdf)
+SENSORS:
+  - NAME: conveyor_beam      # er_session.BEAM_TOPIC; the same beam as L8 and L9
+    TYPE: break_beam
+    POSE:
+      XYZ: [0.6, 0.95, 0.44]
+      RPY: [0.0, 0.0, pi/2]
+    UPDATE_RATE: 10
+  - NAME: er_camera          # er_session.CAMERA_TOPIC is /er_camera/image (image_plugin.cpp:47)
+    TYPE: camera
+    POSE:
+      # The camera looks at the side of the cell, where ARIAC puts the defects: each defect
+      # has an angle THETA around the cell and a height Z (defects.yaml). From above, a
+      # camera sees only the top of an upright cell.
+      # 1. aim point: a cell at x = 0.8 m (the middle of the conveyor's lidar zone, x 0.5 to
+      #    1.1 m, structures.py LIDAR_BBOX1), y = 1.0 m (the belt's center line, the
+      #    conveyor at y = 1 in ariac.world), z = 0.422 + 0.035 = 0.457 m (belt top plus
+      #    half the 70 mm cell; cell_feed_plugin.hpp spawn z, battery_cell/model.sdf).
+      # 2. distance 0.20 m, chosen: the image height there is 2 x 0.20 x tan(0.2566) =
+      #    0.105 m (vertical field of view 2 x atan(tan(0.873 / 2) x 1080 / 1920) = 0.5133
+      #    rad), so the 70 mm cell fills about two thirds of it. Across, 1920 px cover
+      #    2 x 0.20 x tan(0.873 / 2) = 0.187 m: about 10 px per mm at the cell.
+      # 3. elevation 20 degrees (0.349 rad), chosen: the image shows the side and a little
+      #    of the top. y = 1.0 + 0.20 x cos(20 deg) = 1.188 m, z = 0.457 + 0.20 x
+      #    sin(20 deg) = 0.525 m.
+      # 4. the +y side of the belt, chosen AFTER the offline replay of SEED 2 (l13_trial.yaml):
+      #    from +y, 5 of the 12 cells' 9 defects point within 60 degrees of the camera; from
+      #    -y, 1 of 9. ARIAC turns each cell to a random angle (cell_feed_plugin.cpp:83, 257),
+      #    so one camera on either side sees about half of a cell's side.
+      XYZ: [0.8, 1.188, 0.525]
+      # 5. yaw -pi/2 turns the view axis (+x) to world -y, toward the belt; pitch 0.349 tilts
+      #    it 20 degrees down (tf_transformations.quaternion_from_euler, as
+      #    user_config_parser.py uses it). The image's left is the camera's +y, world +x:
+      #    cells move from the right of the image to the left.
+      RPY: [0.0, 0.349, -pi/2]
+    UPDATE_RATE: 30          # the only rate ARIAC accepts for a camera (yaml_validation.py:143)
+    RESOLUTION: 1080p        # 1920 x 1080 (structures.py Camera._width, _height), the $800 camera
+    FOV: 0.873               # rad, ARIAC's default (user_config_parser.py _get_fov)

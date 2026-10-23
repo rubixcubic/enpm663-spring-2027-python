@@ -1,0 +1,5 @@
+seeds 1 to 1000, malfunction off
+              accepted    total bad cell    short  stopped  binned
+plan only          613      373       13        1        0      28
+react only         612      345       43        0        0     172
+three layers       921        4        6        0       69      45

@@ -1,0 +1,2 @@
+kit total 14.09 V (3.54 + 3.44 + 3.65 + 3.46); window 14.25 to 14.55 V: OUTSIDE
+decision: all four slots agree; submit

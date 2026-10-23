@@ -1,0 +1,14 @@
+{"listings": [
+ {"name": "run2", "source": "agent_rec1.txt", "from": "=== Run 2", "to": "stop:", "width": 72},
+ {"name": "run1_calls", "source": "agent_rec1.txt", "from": "=== Run 1", "to": "stop:", "drop": ["goal:", "obs "], "width": 72},
+ {"name": "run1_obs24", "source": "agent_rec1.txt", "from": "=== Run 1", "to": "stop:", "drop": ["===", "goal:", "call ", "  model:", "  result:", "stop:", "obs 0:", "obs 1:", "obs 3:"], "width": 200},
+ {"name": "system_message", "source": "system_message.txt", "from": null, "to": null, "width": 100},
+ {"name": "structured_live", "source": "structured_live.txt", "from": "user:", "to": "tokens:", "width": 160},
+ {"name": "mcp_tools", "source": "mcp_demo.txt", "from": "tool:", "to": "call:", "drop": ["call:"]},
+ {"name": "mcp_calls", "source": "mcp_demo.txt", "from": "call:", "to": null, "width": 140},
+ {"name": "run1_cost", "source": "agent_run1_cost.txt", "from": null, "to": null, "width": 150},
+ {"name": "token_growth", "source": "token_growth.txt", "from": null, "to": null},
+ {"name": "validator_seven", "source": "validator.txt", "from": "=== Seven outputs", "to": "  -> semantic: agv3"},
+ {"name": "validator_retry1", "source": "validator.txt", "from": "=== Bounded retry, run 1", "to": "  result:", "width": 140},
+ {"name": "validator_retry2", "source": "validator.txt", "from": "=== Bounded retry, run 2", "to": "  result:", "width": 140}
+]}

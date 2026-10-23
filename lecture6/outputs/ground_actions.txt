@@ -1,0 +1,9 @@
+action              small  large
+check-kit             256   8192
+move-agv                2      4
+pick-from-conveyor      4      8
+pick-from-tester       16     32
+place-in-slot          16     64
+place-on-tester        16     32
+submit-kit              1      2
+total                 311   8334

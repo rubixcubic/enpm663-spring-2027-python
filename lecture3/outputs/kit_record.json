@@ -1,0 +1,11 @@
+{
+  "agv": 1,
+  "station": "INSPECTION",
+  "cell_type": "LI_ION",
+  "slots": [
+    {"slot": 1, "cell": {"id": "c1", "voltage": 3.55}},
+    {"slot": 2, "cell": {"id": "c2", "voltage": 3.62}},
+    {"slot": 3, "cell": {"id": "c3", "voltage": 3.7}},
+    {"slot": 4, "cell": null}
+  ]
+}

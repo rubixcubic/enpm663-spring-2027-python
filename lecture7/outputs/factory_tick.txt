@@ -1,0 +1,12 @@
+after tick 2 (steps 3 to 5 not started yet):
+{-} plan [*]
+    {-} 1 pick-from-tester [o]
+        --> guard [o]
+        --> act [o] -- SUCCESS
+        --> verify [o]
+        --> update [o]
+    {-} 2 place-in-slot [*]
+        --> guard [o]
+        --> act [*]
+        --> verify [-]
+        --> update [-]

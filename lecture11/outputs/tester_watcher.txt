@@ -1,0 +1,17 @@
+Run 1: the code's behavior (-1 and MALFUNCTIONING)
+  t =  179.5 s  average of last 5: 3.60 V
+  t =  180.0 s  tester_1 DOWN: status MALFUNCTIONING, voltage -1
+  t =  200.0 s  average of last 5: none
+  t =  225.0 s  tester_1 UP: status OPERATIONAL again
+  t =  229.5 s  average of last 5: 3.60 V
+
+Run 2: the docs' behavior (no messages)
+  t =  179.5 s  average of last 5: 3.60 V
+  t =  180.5 s  tester_1 DOWN: no reading for more than 0.5 s
+  t =  200.0 s  average of last 5: none
+  t =  225.0 s  tester_1 UP: status OPERATIONAL again
+  t =  229.5 s  average of last 5: 3.60 V
+
+Readings [3.62, 3.58, 3.61, -1.0]
+  average with -1 kept:     2.4525 V
+  average with -1 rejected: 3.6033 V

@@ -1,0 +1,14 @@
+cell  ARIAC (log)    model answer
+c01   BULGE          BULGE
+c02   DENT           BULGE
+c03   SCRATCH        none
+c04   SCRATCH        DENT
+c05   none           none
+c06   BULGE          BULGE
+c07   SCRATCH        none
+c08   none           none
+c09   none           none
+c10   BULGE, DENT    BULGE
+c11   none           none
+c12   DENT           BULGE
+Cells used: 12 of 12

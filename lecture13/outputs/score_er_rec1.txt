@@ -1,0 +1,122 @@
+Recorded once, on 2026-10-18, with gemini-robotics-er-2-preview. A rerun gives different answers.
+Recording: outputs/raw/er_rec1; ground truth: ARIAC's cell log (log_cell_info:=true)
+
+1. The deck's schema check, on the answers as sent
+cell  ARIAC (log)    model answer
+c01   BULGE          rejected by the schema
+c02   DENT           rejected by the schema
+c03   SCRATCH        rejected by the schema
+c04   SCRATCH        rejected by the schema
+c05   none           rejected by the schema
+c06   BULGE          rejected by the schema
+c07   SCRATCH        rejected by the schema
+c08   none           rejected by the schema
+c09   none           no answer: SecondRequest: c09: the SDK tried to send the ca
+c10   BULGE, DENT    no answer: not sent
+c11   none           no answer: not sent
+c12   DENT           no answer: not sent
+Cells used: 0 of 12
+  c01 rejected by the schema: not JSON: Expecting value
+  c02 rejected by the schema: not JSON: Expecting value
+  c03 rejected by the schema: not JSON: Expecting value
+  c04 rejected by the schema: not JSON: Expecting value
+  c05 rejected by the schema: not JSON: Expecting value
+  c06 rejected by the schema: not JSON: Expecting value
+  c07 rejected by the schema: not JSON: Expecting value
+  c08 rejected by the schema: not JSON: Expecting value
+  c09 has no answer
+  c10 has no answer
+  c11 has no answer
+  c12 has no answer
+Per defect type, over the cells used (95% intervals: Wilson score)
+DENT: TP 0  FP 0  FN 0
+  precision 0/0, not defined
+  recall    0/0, not defined
+  recall: no cell to move
+SCRATCH: TP 0  FP 0  FN 0
+  precision 0/0, not defined
+  recall    0/0, not defined
+  recall: no cell to move
+BULGE: TP 0  FP 0  FN 0
+  precision 0/0, not defined
+  recall    0/0, not defined
+  recall: no cell to move
+Any defect (the cell is defective): TP 0  FP 0  FN 0
+  precision 0/0, not defined
+  recall    0/0, not defined
+
+2. Not the deck's check: the same answers with the ```json fence removed
+cell  ARIAC (log)    model answer
+c01   BULGE          BULGE
+c02   DENT           DENT
+c03   SCRATCH        none
+c04   SCRATCH        DENT
+c05   none           none
+c06   BULGE          BULGE
+c07   SCRATCH        none
+c08   none           none
+c09   none           no answer: SecondRequest: c09: the SDK tried to send the ca
+c10   BULGE, DENT    no answer: not sent
+c11   none           no answer: not sent
+c12   DENT           no answer: not sent
+Cells used: 8 of 12
+  c09 has no answer
+  c10 has no answer
+  c11 has no answer
+  c12 has no answer
+Per defect type, over the cells used (95% intervals: Wilson score)
+DENT: TP 1  FP 1  FN 0
+  precision 1/2 = 0.50 (95% interval 0.09 to 0.91)
+  recall    1/1 = 1.00 (95% interval 0.21 to 1.00)
+  recall: one cell more or less moves it from 1/1 to 0/1 or 1/1 (1.00 a cell)
+SCRATCH: TP 0  FP 0  FN 3
+  precision 0/0, not defined
+  recall    0/3 = 0.00 (95% interval 0.00 to 0.56)
+  recall: one cell more or less moves it from 0/3 to 0/3 or 1/3 (0.33 a cell)
+BULGE: TP 2  FP 0  FN 0
+  precision 2/2 = 1.00 (95% interval 0.34 to 1.00)
+  recall    2/2 = 1.00 (95% interval 0.34 to 1.00)
+  recall: one cell more or less moves it from 2/2 to 1/2 or 2/2 (0.50 a cell)
+Any defect (the cell is defective): TP 4  FP 0  FN 2
+  precision 4/4 = 1.00 (95% interval 0.51 to 1.00)
+  recall    4/6 = 0.67 (95% interval 0.30 to 0.90)
+
+Each logged defect: depth (L5 mesh), angle from the camera, image position
+(model named the type: from table 2). The pinhole position is approximate:
+it puts c01's cell center about 80 px (about 8 mm) right of where the image shows it.
+cell  type     set  Z mm  depth mm  deg from camera  ~row, col px  model named the type
+c01   BULGE      1  46.9     +1.20               84   422,  819   yes
+c02   DENT       2  14.2     -2.14                2   777,  928   yes
+c03   SCRATCH    3  34.8     -1.20              101   531, 1038   no
+c04   SCRATCH    5  25.4     -2.05               14   669,  556   no
+c06   BULGE      1  46.9     +1.20              100   413,  828   yes
+c07   SCRATCH    3  34.8     -1.20               47   564, 1018   no
+c10   BULGE      7  54.2     +0.97               37   367,  869   no answer
+c10   DENT       7  31.3     -1.92              152   539,  893   no answer
+c12   DENT       2  14.2     -2.14               54   757,  928   no answer
+
+Points the model gave (table 2), [y, x] in 0 to 1000, and as row, col px
+c01   BULGE    [380, 383]   410,  735
+c02   DENT     [735, 444]   794,  852
+c04   DENT     [635, 260]   686,  499
+c06   BULGE    [380, 390]   410,  749
+
+Tokens, latency and cost per call ($1.00 and $5.00 per 1M input and output
+tokens, paid tier through 2026-12-31; output billed with thinking tokens)
+cell  input  output  thought  total  wall s   cost $
+c01    1203      36      322   1561    6.39  0.002993
+c02    1203      36      763   2002    6.92  0.005198
+c03    1203      17      233   1453    4.16  0.002453
+c04    1203      36      305   1544    5.26  0.002908
+c05    1203      17      194   1414    4.51  0.002258
+c06    1203      36      460   1699    5.11  0.003683
+c07    1203      17      184   1404    4.14  0.002208
+c08    1203      17      141   1361    3.86  0.001993
+c09   no usage: HTTP 429 after 36.14 wall s
+c10   not sent
+c11   not sent
+c12   not sent
+all    9624     212     2602  12438   40.35  0.023694
+mean per answered call: 5.04 wall s, $0.002962
+at the prices from 2027-01-01 ($2.00 and $10.00 per 1M, same page): all $0.047388, mean $0.005923
+Free tier: free of charge (same pricing page).

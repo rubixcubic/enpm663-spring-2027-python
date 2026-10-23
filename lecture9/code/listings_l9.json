@@ -1,0 +1,13 @@
+{"listings": [
+ {"name": "replan_part1", "source": "closed_loop_replan_rec1.txt", "from": "call 1:", "to": "obs 8:", "drop": ["call ", "  result:"], "width": 72},
+ {"name": "replan_part2", "source": "closed_loop_replan_rec1.txt", "from": "call 9:", "to": "obs 17:", "drop": ["call ", "  result:", "obs 9:", "obs 13:", "obs 15:", "obs 16:"], "width": 72},
+ {"name": "replan_part3", "source": "closed_loop_replan_rec1.txt", "from": "call 18:", "to": "stop:", "drop": ["call ", "  result:", "obs 18:", "obs 20:", "obs 22:", "obs 24:"], "width": 72},
+ {"name": "replan_tester1", "source": "closed_loop_replan_rec1.txt", "from": "obs 2:", "to": "obs 11:", "drop": ["call ", "  model:", "  result:", "  orch:", "obs 4:", "obs 5:", "obs 6:", "obs 7:", "obs 8:", "obs 9:"], "width": 72},
+ {"name": "wait_hold", "source": "closed_loop_wait_rec1.txt", "from": "call 5:", "to": "obs 13:", "drop": ["call ", "  result:", "obs 6:", "obs 7:", "obs 8:", "obs 9:", "obs 10:", "obs 11:"], "width": 72},
+ {"name": "vlm_live_attempts", "source": "closed_loop_replan_rec1.txt", "from": "Live VLM", "to": "Cross-check before", "drop": ["Cross-check before"]},
+ {"name": "vlm_live_cross", "source": "closed_loop_replan_rec1.txt", "from": "slot  vlm", "to": "decision:"},
+ {"name": "vlm_live_kit", "source": "closed_loop_replan_rec1.txt", "from": "kit total", "to": "decision:", "drop": ["image:", "Live VLM", "  call:", "  attempt", "Cross-check", "slot ", "1 ", "2 ", "3 ", "4 "]},
+ {"name": "vlm_weak", "source": "vlm_check.txt", "from": "Scripted stand-in VLM", "to": "  check:"},
+ {"name": "vlm_attempts", "source": "vlm_check.txt", "from": "Structured prompt", "to": "  attempt 2:"},
+ {"name": "vlm_cross", "source": "vlm_check.txt", "from": "Cross-check before", "to": "decision:"}
+]}

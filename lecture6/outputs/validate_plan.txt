@@ -1,0 +1,6 @@
+validator: sequential_plan_validator
+plan.txt: VALID
+plan_swapped.txt: INVALID
+  reason: INAPPLICABLE_ACTION
+  failed step: place-in-slot(inspection_robot_2, c1, agv1, s1)
+  log: Preconditions [holding(inspection_robot_2, c1)] of 6-th action instance place-in-slot(inspection_robot_2, c1, agv1, s1) are not satisfied.

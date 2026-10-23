@@ -1,0 +1,14 @@
+  model:  robot1_pick_from_conveyor({})
+  model:  robot1_place_on_tester({"tester": 1})
+obs 19:  t=170.4 s | tester 1 3.36 V OPERATIONAL | tester 2 -0.00 V  ...
+  model:  robot2_pick_from_tester({"tester": 1})
+  model:  robot2_drop_in_recycling({})
+obs 21:  t=188.8 s | tester 1 0.02 V OPERATIONAL | tester 2 0.00 V O ...
+  model:  robot1_pick_from_conveyor({})
+  model:  robot1_place_on_tester({"tester": 1})
+obs 23:  t=210.3 s | tester 1 3.46 V OPERATIONAL | tester 2 -0.01 V  ...
+  model:  robot2_pick_from_tester({"tester": 1})
+  model:  robot2_place_in_slot({"agv": 1, "slot": 4})
+obs 25:  t=225.8 s | tester 1 -0.02 V OPERATIONAL | tester 2 0.01 V  ...
+  model:  text 'done'
+stop: goal reached

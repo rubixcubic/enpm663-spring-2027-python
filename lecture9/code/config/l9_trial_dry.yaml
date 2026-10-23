@@ -1,0 +1,8 @@
+# L9 dry run: no challenge, to time the four cycles before the malfunction is placed.
+# Change the ID whenever this file changes (ARIAC refuses a known ID with another file).
+ID: LEC9D001
+SEED: 1
+DEFECT_RATE: 0.0
+TIME_LIMIT: 3000     # simulation s, chosen: the skills probes' value
+NUM_KITS: 1
+NUM_MODULES: 0

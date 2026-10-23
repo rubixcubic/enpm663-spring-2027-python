@@ -1,0 +1,78 @@
+Recorded once, on 2026-10-18, with gemini-robotics-er-2-preview. A rerun gives different answers.
+Recording: outputs/raw/er_rec2; ground truth: ARIAC's cell log (log_cell_info:=true)
+
+1. The deck's schema check, on the answers as sent
+cell  ARIAC (log)    model answer
+c01   BULGE          BULGE
+c02   DENT           BULGE
+c03   SCRATCH        none
+c04   SCRATCH        DENT
+c05   none           none
+c06   BULGE          BULGE
+c07   SCRATCH        none
+c08   none           none
+c09   none           none
+c10   BULGE, DENT    BULGE
+c11   none           none
+c12   DENT           BULGE
+Cells used: 12 of 12
+Per defect type, over the cells used (95% intervals: Wilson score)
+DENT: TP 0  FP 1  FN 3
+  precision 0/1 = 0.00 (95% interval 0.00 to 0.79)
+  recall    0/3 = 0.00 (95% interval 0.00 to 0.56)
+  recall: one cell more or less moves it from 0/3 to 0/3 or 1/3 (0.33 a cell)
+SCRATCH: TP 0  FP 0  FN 3
+  precision 0/0, not defined
+  recall    0/3 = 0.00 (95% interval 0.00 to 0.56)
+  recall: one cell more or less moves it from 0/3 to 0/3 or 1/3 (0.33 a cell)
+BULGE: TP 3  FP 2  FN 0
+  precision 3/5 = 0.60 (95% interval 0.23 to 0.88)
+  recall    3/3 = 1.00 (95% interval 0.44 to 1.00)
+  recall: one cell more or less moves it from 3/3 to 2/3 or 3/3 (0.33 a cell)
+Any defect (the cell is defective): TP 6  FP 0  FN 2
+  precision 6/6 = 1.00 (95% interval 0.61 to 1.00)
+  recall    6/8 = 0.75 (95% interval 0.41 to 0.93)
+
+2. No answer had a ```json fence: the tables below use table 1
+
+Each logged defect: depth (L5 mesh), angle from the camera, image position
+(model named the type: from table 1). The pinhole position is approximate:
+it puts c01's cell center about 80 px (about 8 mm) right of where the image shows it.
+cell  type     set  Z mm  depth mm  deg from camera  ~row, col px  model named the type
+c01   BULGE      1  46.9     +1.20               84   422,  819   yes
+c02   DENT       2  14.2     -2.14                2   777,  928   no
+c03   SCRATCH    3  34.8     -1.20              101   531, 1038   no
+c04   SCRATCH    5  25.4     -2.05               14   669,  556   no
+c06   BULGE      1  46.9     +1.20              100   413,  828   yes
+c07   SCRATCH    3  34.8     -1.20               47   564, 1018   no
+c10   BULGE      7  54.2     +0.97               37   367,  869   yes
+c10   DENT       7  31.3     -1.92              152   539,  893   no
+c12   DENT       2  14.2     -2.14               54   757,  928   no
+
+Points the model gave (table 1), [y, x] in 0 to 1000, and as row, col px
+c01   BULGE    [380, 384]   410,  737
+c02   BULGE    [735, 445]   794,  854
+c04   DENT     [633, 255]   684,  490
+c06   BULGE    [380, 390]   410,  749
+c10   BULGE    [366, 417]   395,  801
+c12   BULGE    [718, 447]   775,  858
+
+Tokens, latency and cost per call ($1.00 and $5.00 per 1M input and output
+tokens, paid tier through 2026-12-31; output billed with thinking tokens)
+cell  input  output  thought  total  wall s   cost $
+c01    1203      51      332   1586    4.19  0.003118
+c02    1203      51      301   1555    4.41  0.002963
+c03    1203      18      120   1341    3.28  0.001893
+c04    1203      51      266   1520    5.44  0.002788
+c05    1203      18      217   1438    3.91  0.002378
+c06    1203      51      242   1496    3.53  0.002668
+c07    1203      12      124   1339    2.90  0.001883
+c08    1203      18      143   1364    2.94  0.002008
+c09    1203      18      248   1469    3.91  0.002533
+c10    1203      51      186   1440    3.78  0.002388
+c11    1203      18      162   1383    2.98  0.002103
+c12    1203      51      504   1758    4.00  0.003978
+all   14436     408     2845  17689   45.27  0.030701
+mean per answered call: 3.77 wall s, $0.002558
+at the prices from 2027-01-01 ($2.00 and $10.00 per 1M, same page): all $0.061402, mean $0.005117
+Free tier: free of charge (same pricing page).

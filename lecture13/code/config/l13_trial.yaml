@@ -1,0 +1,18 @@
+# L13 live run: 12 Li-Ion cells on the inspection conveyor, about half with defects.
+# Change the ID whenever this file changes (ARIAC refuses a known ID with another file).
+#
+# Keys from the ARIAC 2025 source (commit 0c3e722): trial_schema.json requires ID, SEED,
+# DEFECT_RATE, TIME_LIMIT, NUM_KITS and NUM_MODULES. Without POSSIBLE_DEFECTS, all ten
+# defect sets of ariac_setup/config/defects.yaml can be drawn (cell_feed_plugin.cpp:60-76).
+# Each cell is defective when a uniform draw is <= DEFECT_RATE (cell_feed_plugin.cpp:249).
+ID: LEC13001
+# SEED 2, chosen by a rule: the smallest SEED from 1 up whose first 12 cells, replayed
+# offline with the plugin's own draws (std::mt19937, cell_feed_plugin.cpp:78-84 and 243-262),
+# hold each defect type on 3 or more cells and leave 3 or more cells with no defect.
+# The replay predicted sets 1, 2, 3, 5, 0, 1, 3, 0, 0, 7, 0, 2 (0: no defect).
+# The ARIAC log of the run (log_cell_info:=true) is the ground truth, not this replay.
+SEED: 2
+DEFECT_RATE: 0.5     # chosen: about half the cells defective, so precision and recall both have cells
+TIME_LIMIT: 3000     # simulation s, chosen: the skills probes' value, far above about 130 s of feed
+NUM_KITS: 1
+NUM_MODULES: 0

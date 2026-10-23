@@ -1,0 +1,9 @@
+   8.0 s  cell 1: tester 1 reads  3.72 V -> AGV 1
+  22.0 s  cell 2: tester 2 reads  3.72 V -> AGV 1
+  36.0 s  cell 3: tester 1 reads -1.00 V -> bin
+  48.0 s  cell 4: tester 2 reads  3.51 V -> AGV 1
+  62.0 s  cell 5: tester 1 reads -1.00 V -> bin
+  74.0 s  no cell: tester 2 reads -0.03 V -> bin
+  86.0 s  no cell: tester 1 reads -0.02 V -> bin
+  98.0 s  cell 6: tester 2 reads  3.57 V -> AGV 1
+ 114.0 s  kit rejected: total 14.59 V is outside 14.25 to 14.55 V

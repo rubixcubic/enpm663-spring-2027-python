@@ -1,0 +1,5 @@
+Structured prompt with the schema:
+  attempt 1: rejected
+    slots.0.slot: 0 is less than the minimum of 1
+  re-prompt with: 'Your last reply failed: ...'
+  attempt 2: valid

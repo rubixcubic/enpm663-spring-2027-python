@@ -1,0 +1,11 @@
+=== Run 2 (scripted model: fixed replies) ===
+goal:   Put one Li-Ion cell from the conveyor into agv1 slot 1. Test ...
+obs 0:  t=1.9 s | tester 1 0.00 V OPERATIONAL | tester 2 -0.00 V OPE ...
+call 1: 1 messages; scripted
+  model:  robot2_pick_from_tester({"tester": 1})
+  orch:   {"error": "refused: tester 1 is empty (0.00 V)"}
+obs 1:  t=2.8 s | tester 1 0.04 V OPERATIONAL | tester 2 -0.00 V OPE ...
+call 2: 3 messages; scripted
+  model:  robot2_pick_from_tester({"tester": 1})
+  orch:   {"error": "refused: tester 1 is empty (0.04 V)"}
+stop: 2 invalid outputs in a row

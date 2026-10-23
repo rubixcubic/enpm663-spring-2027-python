@@ -1,0 +1,2 @@
+silent: FAILURE after 2.00 s
+  messages 0, valid 0, skipped 0

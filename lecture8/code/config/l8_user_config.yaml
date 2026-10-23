@@ -1,0 +1,10 @@
+COMPETITOR_NAME: enpm663_lecture_demo
+CONVEYOR_SPEED: 0.1   # m/s; the skills were tested at this speed (skills README, Known limits)
+CELL_FEED_RATE: 0.1
+SENSORS:
+  - NAME: conveyor_beam      # skill_tools.BEAM_TOPIC; max_trigger_age in skills.yaml assumes x = 0.6 m
+    TYPE: break_beam
+    POSE:
+      XYZ: [0.6, 0.95, 0.44]
+      RPY: [0.0, 0.0, pi/2]
+    UPDATE_RATE: 10

@@ -1,0 +1,13 @@
+beam x = 0.60 m, catch x = 1.40 m, belt at 0.1 m/s
+A. goal sent at t = 2.0 s
+  cell at the catch x at t = 8.00 s; close at t = 7.85 s
+  belt kept its speed: caught, holding CELL
+B. goal sent at t = 5.0 s
+  refused, no motion: cell due in 3.00 s, arm needs 3.925 s
+C. goal sent at t = 2.0 s, belt stops at t = 6.0 s
+  cell at the catch x at t = 8.00 s; close at t = 7.85 s
+  t = 6.0 s, belt changed: PRECONDITION_FAILED, not closed
+  cell stopped at x = 1.20 m; the beam saw it at x = 0.60 m
+D. goal sent at t = 7.0 s, belt stopped since t = 6.0 s
+  refused, no motion: belt stopped, beam not at the catch x
+one cell every 10 s at 0.1 m/s: 1.0 m apart

@@ -1,0 +1,8 @@
+# L8 demo trial. Change the ID whenever this file changes: ARIAC refuses a known ID
+# with a different file (sim_tests/harness.py, citing competition_manager_plugin.cpp).
+ID: LEC80001
+SEED: 1
+DEFECT_RATE: 0.0     # every cell is defect-free, so a passing report is correct (skill_tools.py)
+TIME_LIMIT: 3000     # simulation s, chosen: the skills probes' value, so no demo hits it
+NUM_KITS: 1
+NUM_MODULES: 0

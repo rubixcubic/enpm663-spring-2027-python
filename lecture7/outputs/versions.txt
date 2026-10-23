@@ -1,0 +1,5 @@
+date: 2026-10-12
+Python 3.12.3
+py_trees 2.6.0
+BehaviorTree.CPP 4.10.0
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0

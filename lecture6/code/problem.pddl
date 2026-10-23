@@ -1,0 +1,30 @@
+; ENPM663 L6: four cells for one Li-Ion kit on agv1.
+; State chosen for this example: c1 to c4 have passed the door,
+; and the problem assumes all four will test in range.
+(define (problem kit-1)
+  (:domain task1)
+  (:objects
+    c1 c2 c3 c4 - cell
+    inspection_robot_1 inspection_robot_2 - robot
+    tester1 tester2 - tester
+    agv1 - agv)
+  (:init
+    (picks-conveyor inspection_robot_1)
+    (loads-agv inspection_robot_2)
+    (serves inspection_robot_1 tester1)
+    (serves inspection_robot_1 tester2)
+    (serves inspection_robot_2 tester1)
+    (serves inspection_robot_2 tester2)
+    (hand-free inspection_robot_1)
+    (hand-free inspection_robot_2)
+    (tester-free tester1) (tester-free tester2)
+    (agv-at agv1 inspection)
+    (slot-free agv1 s1) (slot-free agv1 s2)
+    (slot-free agv1 s3) (slot-free agv1 s4)
+    (at-door c1) (at-door c2) (at-door c3) (at-door c4)
+    (voltage-ok c1) (voltage-ok c2)
+    (voltage-ok c3) (voltage-ok c4))
+  (:goal (and
+    (in-slot c1 agv1 s1) (in-slot c2 agv1 s2)
+    (in-slot c3 agv1 s3) (in-slot c4 agv1 s4)
+    (submitted agv1))))

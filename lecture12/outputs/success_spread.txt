@@ -1,0 +1,9 @@
+True success rate 0.80, 10000 repeats per n
+  n =   5: middle 95% 0.40 to 1.00, spread 0.179, formula 0.179
+  n =  10: middle 95% 0.50 to 1.00, spread 0.125, formula 0.126
+  n =  20: middle 95% 0.60 to 0.95, spread 0.089, formula 0.089
+  n =  50: middle 95% 0.68 to 0.90, spread 0.056, formula 0.057
+  n = 100: middle 95% 0.72 to 0.87, spread 0.040, formula 0.040
+Two equal systems, 20 runs each:
+  gap of 0.10 or more: 54.8%
+  gap above 2 SE (0.253): 3.1%

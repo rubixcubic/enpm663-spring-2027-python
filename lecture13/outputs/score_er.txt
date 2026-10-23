@@ -1,0 +1,13 @@
+Cells used: 11 of 12
+  rejected by the schema: c10
+DENT
+  lidar  TP 2  FP 0  FN 0   precision 2/2 = 1.00    recall 2/2 = 1.00
+  ER     TP 1  FP 1  FN 1   precision 1/2 = 0.50    recall 1/2 = 0.50
+SCRATCH
+  lidar  TP 1  FP 0  FN 1   precision 1/1 = 1.00    recall 1/2 = 0.50
+  ER     TP 1  FP 0  FN 1   precision 1/1 = 1.00    recall 1/2 = 0.50
+BULGE
+  lidar  TP 2  FP 0  FN 0   precision 2/2 = 1.00    recall 2/2 = 1.00
+  ER     TP 2  FP 1  FN 0   precision 2/3 = 0.67    recall 2/2 = 1.00
+ER and lidar give the same label: 7 of 11
+Latency and cost per call: not measured (stand-in)

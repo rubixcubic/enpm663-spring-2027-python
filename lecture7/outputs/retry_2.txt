@@ -1,0 +1,13 @@
+tick  1: 1 pick-from-tester RUNNING
+tick  1: retry 1 RUNNING
+tick  2: 1 pick-from-tester FAILURE
+tick  2:   act: GRASP_FAILED
+tick  3: 1 pick-from-tester RUNNING
+tick  4: 1 pick-from-tester FAILURE
+tick  4:   act: GRASP_FAILED
+tick  5: 1 pick-from-tester RUNNING
+tick  6: 1 pick-from-tester SUCCESS
+tick  6: retry 1 SUCCESS
+tick  6: 2 place-in-slot RUNNING
+tick  7: 2 place-in-slot SUCCESS
+plan SUCCESS after 7 ticks; 4 goals sent

@@ -1,0 +1,2 @@
+normal: SUCCESS after 1.00 s average 3.62 V
+  messages 10, valid 10, skipped 0

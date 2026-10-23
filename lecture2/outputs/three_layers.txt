@@ -1,0 +1,11 @@
+   8.0 s  cell 1: tester 1 reads  3.72 V -> AGV 1
+  22.0 s  cell 2: tester 2 reads  3.72 V -> AGV 2
+  36.0 s  cell 3: tester 1 MALFUNCTIONING -> move to tester 2
+  41.0 s  cell 3: tester 2 reads  3.60 V -> AGV 1
+  55.1 s  cell 4: tester 2 reads  3.49 V -> AGV 1
+  69.2 s  cell 5: tester 2 reads  3.47 V -> AGV 2
+  75.3 s  tester 1 OPERATIONAL again
+  79.3 s  pick: GRASP_FAILED, attempt 1 of 3
+  83.3 s  pick: GRASP_FAILED, attempt 2 of 3
+  91.3 s  cell 6: tester 1 reads  3.58 V -> AGV 1
+ 107.3 s  kit accepted: total 14.46 V

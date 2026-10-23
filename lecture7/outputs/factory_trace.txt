@@ -1,0 +1,11 @@
+tick  1: 1 pick-from-tester RUNNING
+tick  2: 1 pick-from-tester SUCCESS
+tick  2: 2 place-in-slot RUNNING
+tick  3: 2 place-in-slot SUCCESS
+tick  3: 3 pick-from-tester RUNNING
+tick  4: 3 pick-from-tester SUCCESS
+tick  4: 4 place-in-slot RUNNING
+tick  5: 4 place-in-slot SUCCESS
+tick  5: 5 move-agv RUNNING
+tick  7: 5 move-agv SUCCESS
+plan SUCCESS after 7 ticks; 5 goals sent

@@ -1,0 +1,5 @@
+Scripted stand-in VLM (a real model's answers vary)
+Weak prompt: 'Describe this image.'
+  | The image shows a gray tray with four cylindrical battery cells.
+  | Most look the same. One near the right may be a different type.
+  check: not JSON: Expecting value

@@ -1,0 +1,26 @@
+{
+  "run_1": {
+    "base": 5000.0,
+    "bonuses": {
+      "trial time": 300.00000000000006,
+      "inspection speed": 125.0,
+      "high-priority speed": 119.99999999999997,
+      "sensor cost": 614.5833333333333,
+      "classification": 375.0
+    },
+    "penalties": 150,
+    "score": 6384.583333333333
+  },
+  "run_2": {
+    "base": 3333.3333333333335,
+    "bonuses": {
+      "trial time": 0.0,
+      "inspection speed": 0.0,
+      "high-priority speed": 0.0,
+      "sensor cost": 0.0,
+      "classification": 0.0
+    },
+    "penalties": 150,
+    "score": 3183.3333333333335
+  }
+}

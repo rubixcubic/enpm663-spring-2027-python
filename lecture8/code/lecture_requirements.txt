@@ -1,0 +1,4 @@
+# Lecture-only venv for the L8 and L9 demos (setup_lecture_venv.sh).
+# Not part of the skills package or its image.
+google-genai==2.31.0
+mcp==2.3.0

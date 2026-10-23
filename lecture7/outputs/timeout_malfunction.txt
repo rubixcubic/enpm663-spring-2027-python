@@ -1,0 +1,2 @@
+malfunction: FAILURE after 2.00 s
+  messages 20, valid 0, skipped 20

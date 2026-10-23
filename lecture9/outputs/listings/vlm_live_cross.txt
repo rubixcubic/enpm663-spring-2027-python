@@ -1,0 +1,6 @@
+slot  vlm (conf.)       tray_status  record        verdict
+1     LI_ION (0.95)     occupied     LI_ION 3.54 V agree
+2     LI_ION (0.95)     occupied     LI_ION 3.44 V agree
+3     LI_ION (0.95)     occupied     LI_ION 3.65 V agree
+4     LI_ION (0.95)     occupied     LI_ION 3.46 V agree
+decision: all four slots agree; submit

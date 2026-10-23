@@ -1,0 +1,15 @@
+Each one: POST to generativelanguage.googleapis.com
+          path /v1beta/interactions
+{
+  "model": "gemini-robotics-er-2-preview",
+  "generation_config": {"thinking_level": "medium"},
+  "input": [
+    {
+     "content": [
+      {"data": "<96 chars>", "mime_type": "image/png", "type": "image"},
+      {"text": "The image shows one batt ...", "type": "text"}
+     ],
+     "type": "user_input"
+    }
+  ]
+}

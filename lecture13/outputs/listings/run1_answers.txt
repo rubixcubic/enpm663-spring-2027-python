@@ -1,0 +1,9 @@
+c01 (6.39 s, HTTP 200): ```json
+{"defective": true, "defects": [{"type": "BULGE", "point": [380, 383]}]}
+```
+...
+c09 (36.14 s, HTTP 429): SecondRequest: c09: the SDK tried to send the call again; no retry is allowed
+stop: HTTP 429; the other cells are not sent
+calls answered: 8 of 12
+Cells used: 0 of 12
+  c01 rejected by the schema: not JSON: Expecting value

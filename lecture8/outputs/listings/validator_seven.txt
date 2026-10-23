@@ -1,0 +1,15 @@
+=== Seven outputs, one check each ===
+{"agv": 1, "station": "SHIPPING"}
+  -> valid
+{"agv": 1, "station": SHIPPING}
+  -> not JSON: Expecting value
+{"agv": 4, "station": "SHIPPING"}
+  -> schema: 4 is greater than the maximum of 3
+{"agv": 1, "station": "SHIP"}
+  -> schema: 'SHIP' is not one of ['INSPECTION', 'ASSEMBLY', 'SHIPPING', 'RECYCLING']
+{"agv": 1, "station": "SHIPPING", "speed": 2}
+  -> schema: Additional properties are not allowed ('speed' was unexpected)
+{"agv": 2, "station": "SHIPPING"}
+  -> semantic: agv2 holds 3 of 4 cells
+{"agv": 3, "station": "SHIPPING"}
+  -> semantic: agv3 cannot go RECYCLING to SHIPPING

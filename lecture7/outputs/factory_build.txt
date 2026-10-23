@@ -1,0 +1,7 @@
+plan:
+  1 (pick-from-tester inspection_robot_2 c3 tester1)
+  2 (place-in-slot inspection_robot_2 c3 agv1 s3)
+  3 (pick-from-tester inspection_robot_2 c4 tester2)
+  4 (place-in-slot inspection_robot_2 c4 agv1 s4)
+  5 (move-agv agv1 inspection shipping)
+tree: 5 subtrees under 'plan', memory=True

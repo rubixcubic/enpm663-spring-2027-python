@@ -1,0 +1,23 @@
+memory=True
+  tick 1: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 2: root=RUNNING check=SUCCESS pick=FAILURE place=INVALID
+  tick 3: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 4: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  tick 5: root=SUCCESS check=SUCCESS pick=SUCCESS place=SUCCESS
+  check_tester_ok updated 1 times, pick updated 4 times
+memory=False
+  tick 1: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 2: root=RUNNING check=SUCCESS pick=FAILURE place=INVALID
+  tick 3: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 4: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  tick 5: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 6: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  tick 7: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 8: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  tick 9: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 10: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  tick 11: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 12: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  tick 13: root=RUNNING check=SUCCESS pick=RUNNING place=INVALID
+  tick 14: root=RUNNING check=SUCCESS pick=SUCCESS place=RUNNING
+  check_tester_ok updated 14 times, pick updated 14 times

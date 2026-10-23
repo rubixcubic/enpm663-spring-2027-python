@@ -1,0 +1,4 @@
+cell  input  output  thought  total  wall s   cost $
+c01    1203      51      332   1586    4.19  0.003118
+all   14436     408     2845  17689   45.27  0.030701
+mean per answered call: 3.77 wall s, $0.002558

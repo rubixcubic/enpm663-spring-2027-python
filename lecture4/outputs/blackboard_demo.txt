@@ -1,0 +1,7 @@
+cell 1: 3.55 V, placed; slots_filled=1, kit total 3.55 V
+cell 2: 3.85 V, recycled; slots_filled=1, kit total 3.55 V
+cell 3: 3.62 V, placed; slots_filled=2, kit total 7.17 V
+A reader tries to write:
+  AttributeError:
+    client 'voltage_in_range' does not have write access to
+    '/tester1/voltage'
