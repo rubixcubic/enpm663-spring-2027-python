@@ -114,16 +114,19 @@ wording.
   and API responses (several recorded runs in lectures 8, 9 and 13), and an
   ARIAC source checkout (lecture 5's `mesh_depths.py`). `run_repo.sh` prints a
   `skipped ...` line for each such step instead of running it.
-- **Several lectures' `versions.txt` is skipped, for a few different
-  reasons.** Lectures 4, 5, 7, 10 and 11 need ROS 2 sourced (lecture 7 also
-  needs `g++` and BehaviorTree.CPP) to report the versions ROS 2 packages;
-  lectures 8 and 9 need the course's Docker container
-  (`enpm663_skills_dev`); lecture 6's `versions.txt` compares a system Python
-  against a venv Python, which are the same uv environment here, so
-  `run_repo.sh` does not rerun that comparison. A few other steps are
-  skipped for their own reasons (two shell test scripts, the deck's own
-  `.tex` file for a listings check in lectures 8 and 9); `run_repo.sh` names
-  each one.
+- **Several lectures' `versions.txt` is skipped, each for its own reason.**
+  - Lecture 4 needs `py_trees_ros`, a ROS package.
+  - Lectures 5 and 10 report the ROS 2 distribution.
+  - Lecture 7 needs ROS 2, `g++` and BehaviorTree.CPP.
+  - Lecture 11 sources ROS 2 to report the versions of the `py_trees` and
+    `jsonschema` packages that ROS ships.
+  - Lectures 8 and 9 query the course's Docker container
+    (`enpm663_skills_dev`).
+  - Lecture 6 compares two Pythons that are the same uv environment here, so
+    `run_repo.sh` does not rerun that comparison.
+  A few other steps are skipped for their own reasons (two shell test
+  scripts, the deck's own `.tex` file for a listings check in lectures 8 and
+  9); `run_repo.sh` names each one.
 
 ## For maintainers
 
