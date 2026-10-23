@@ -102,6 +102,8 @@ run one of its live modes by hand. Each live mode reads a key file:
 key file does not exist. When it does exist, `orchestrator.py --fake` calls
 Gemini; run `orchestrator.py --fake --runs dry` or `--runs 2` for the
 scripted model.
+`closed_loop.py` needs ROS 2 and ARIAC in every mode, `--scripted`
+included: it connects to the simulation before it picks a model.
 
 ## Lectures
 

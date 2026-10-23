@@ -1,7 +1,8 @@
 # Lecture 8 scripts
 
-Seventeen managed files: the offline parts of the L8 code (no ARIAC, no API
-key needed to run them) plus their tests. The scripts that only run against
+Seventeen managed files: the L8 code that needs no ROS 2 to import, plus
+its tests. Most of it runs with no ARIAC and no API key; `sim_session.py`
+and `smoke.py` need ARIAC when they run. The scripts that only run against
 ARIAC, with Gemini or with the MCP server, are not exercised by this
 repository's `run_repo.sh`; see the root README's "What is not here" section.
 
