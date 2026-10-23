@@ -1,0 +1,3 @@
+# The two lecture folders the sync writes to, relative to this repository.
+slides = "../../latex/enpm663-spring-2027-latex/slides/lectures"
+docs = "../../rtd/enpm663-spring-docs/docs/source/lectures"
