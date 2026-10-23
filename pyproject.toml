@@ -12,6 +12,7 @@ dependencies = [
     "up-fast-downward==1.0.0",
     "google-genai==2.31.0",
     "httpx==0.28.1",
+    "Pillow==10.2.0",
 ]
 
 [dependency-groups]
