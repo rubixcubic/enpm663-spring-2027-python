@@ -5,6 +5,10 @@ key needed to run them) plus their tests. The scripts that only run against
 ARIAC, with Gemini or with the MCP server, are not exercised by this
 repository's `run_repo.sh`; see the root README's "What is not here" section.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`orchestrator.py`**: the agent loop: observe, ask the model, check the
   call (`check_call()` and `guard()`), run it, record the result, stop. Run 1
   uses Gemini, Run 2 a scripted model. Slide: "lecture8/code/orchestrator.py,
@@ -56,14 +60,23 @@ repository's `run_repo.sh`; see the root README's "What is not here" section.
   shown on a slide. Writes `outputs/listings/*.txt` when it builds; its
   `check` step needs the deck's `L8-ENPM663-v1.0.tex`, which lives in the
   slides repository, so `run_repo.sh` skips that step here.
-- **`smoke.py`**: not described on the docs code page. Not shown on a slide.
-- **`tests/test_gemini_model.py`**: not described on the docs code page. Not
-  shown on a slide. Pytest tests; `run_repo.sh` does not run them here (run
-  them with `cd lecture8/code && env -u PYTHONPATH uv run python -m
-  pytest`).
-- **`tests/test_listings.py`**: not described on the docs code page. Not
-  shown on a slide. Pytest tests; see above for how to run them.
-- **`tests/test_orchestrator.py`**: not described on the docs code page. Not
-  shown on a slide. Pytest tests; see above for how to run them.
-- **`tests/test_skill_tools.py`**: not described on the docs code page. Not
-  shown on a slide. Pytest tests; see above for how to run them.
+- **`smoke.py`**: the smoke test before any recording: each act tool once,
+  with its result code checked, in two cycles. It needs ARIAC and the skills
+  (it calls `ros_node()` in `main()`). Not described on the docs code page.
+  Not shown on a slide.
+- **`tests/test_gemini_model.py`**: `gemini_model.py` against three recorded
+  responses (`tests/fixtures`), and the key rules. Not described on the docs
+  code page. Not shown on a slide. Pytest tests; `run_repo.sh` does not run
+  them here (run them with `cd lecture8/code && env -u PYTHONPATH uv run
+  python -m pytest tests`).
+- **`tests/test_listings.py`**: `listings.py`: the filter, and the
+  byte-for-byte check of every deck listing. Not described on the docs code
+  page. Not shown on a slide. Pytest tests; see above for how to run them.
+- **`tests/test_orchestrator.py`**: the orchestrator loop with
+  `ScriptedModel` and `FakeTools`: stop conditions, checks, record. Not
+  described on the docs code page. Not shown on a slide. Pytest tests; see
+  above for how to run them.
+- **`tests/test_skill_tools.py`**: tool declarations against their Python
+  methods, and the pure helpers, with no ROS 2. Not described on the docs
+  code page. Not shown on a slide. Pytest tests; see above for how to run
+  them.

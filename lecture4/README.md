@@ -3,6 +3,10 @@
 Five managed scripts. They use `py_trees` alone and tick a tree of stand-in
 leaves: no robot, no ROS 2 node and no simulator.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`composite_status.py`**: the status a sequence, a selector and three
   decorators return from their children's statuses. Slide:
   "lecture4/code/composite_status.py (excerpt)". Writes

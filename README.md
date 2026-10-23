@@ -66,34 +66,67 @@ line and leaves that step's committed outputs in place. Lecture 13's outputs
 were measured under jsonschema 4.26.0; its other outputs are identical under
 this project's jsonschema 4.10.3, so only its `versions.txt` is skipped.
 
-### No API calls by default
+## Running a lecture's tests
 
-A few scripts can call the Gemini API. No `run_repo.sh` in this repository
-calls it: lecture 13's `er_demo.py` and `score_er.py` run in their offline,
-scripted mode here. A live call runs only when the environment variable
-`ENPM663_LIVE=1` is set and the key file `~/.config/enpm663/gemini_key`
-exists.
+Lectures 8, 9 and 13 have pytest tests in `code/tests/`. `run_repo.sh` does
+not run them. Run them from the lecture's `code/` folder, with
+`python -m pytest`:
+
+```bash
+cd lecture8/code
+uv run python -m pytest tests
+```
+
+`python -m pytest` puts the `code/` folder on Python's import path, and the
+tests need it there. `uv run pytest tests` in `code/`, or
+`uv run pytest lecture8/code/tests` from the repository root, stops with 4
+errors while it collects lecture 8's tests.
+
+## Which scripts call the Gemini API
+
+No `run_repo.sh` step calls the Gemini API. A script calls it only when you
+run one of its live modes by hand. Each live mode reads a key file:
+
+| Lecture | Live mode you run by hand | Key file it reads | It also needs |
+|---|---|---|---|
+| L8 | `orchestrator.py --fake` (Run 1, the default `--runs 1`) | `$GEMINI_KEY_FILE`, or `/dev/shm/enpm663_gemini_key` when that variable is not set | `DEMO_RAW_DIR` set |
+| L8 | `orchestrator.py` without `--fake` | the same | ROS 2 and ARIAC |
+| L8 | `structured_live.py` | `$GEMINI_KEY_FILE` | `DEMO_RAW_DIR` set |
+| L8 | `gemini_model.py --probe OUT_DIR` | `$GEMINI_KEY_FILE` | nothing else |
+| L9 | `closed_loop.py --policy replan` or `--policy wait`, without `--scripted` | `$GEMINI_KEY_FILE`, or `/dev/shm/enpm663_gemini_key` when that variable is not set | ROS 2 and ARIAC |
+| L13 | `er_demo.py --live KEY_FILE RAW_DIR IMAGE.png ...`, or `--live-structured` | the `KEY_FILE` you pass | nothing else |
+| L13 | `er_rerun.py NAME FROM` | `~/.config/enpm663/gemini_key` | a recorded session in `outputs/raw/FROM` |
+| L13 | `er_session.py TRIAL USER_CONFIG N` | `$GEMINI_KEY_FILE`; with it not set, it saves the images and calls no model | ARIAC, in the skills container (through `run_er_session.sh`) |
+
+`orchestrator.py` and `closed_loop.py` run the scripted model instead when the
+key file does not exist. When it does exist, `orchestrator.py --fake` calls
+Gemini; run `orchestrator.py --fake --runs dry` or `--runs 2` for the
+scripted model.
 
 ## Lectures
 
-| Lecture | Title | Scripts here | Needs a key |
+| Lecture | Title | Scripts here | Key file for a live mode |
 |---|---|---|---|
-| L2 | System Architectures for Agentic Robotics | 1 | nothing |
-| L3 | Knowledge Representation for Agentic Robotics | 3 | nothing |
-| L4 | Behavior Trees for Task Execution | 5 | nothing |
-| L5 | Sensing and Perception for Robotic Systems | 9 | nothing |
-| L6 | Task-Level Planning with PDDL | 8 | nothing |
-| L7 | Plan Execution Patterns with Behavior Trees | 7 | nothing |
-| L8 | LLM Agents I: Agent Loops, Tool Use, and Structured Output | 17 | nothing |
-| L9 | LLM Agents II: VLM Grounding and Agentic Replanning | 4 | nothing |
-| L10 | Frames, Transforms, and Motion Planning | 2 | nothing |
-| L11 | Recovery, Robustness, and Failure Handling for Agentic Systems | 4 | nothing |
-| L12 | Evaluation and Measurement Science for Agentic Systems | 4 | nothing |
-| L13 | The Physical AI Frontier: VLAs, Robot Foundation Models, and World Models | 10 | nothing |
+| L2 | System Architectures for Agentic Robotics | 1 | none: no live mode |
+| L3 | Knowledge Representation for Agentic Robotics | 3 | none: no live mode |
+| L4 | Behavior Trees for Task Execution | 5 | none: no live mode |
+| L5 | Sensing and Perception for Robotic Systems | 9 | none: no live mode |
+| L6 | Task-Level Planning with PDDL | 8 | none: no live mode |
+| L7 | Plan Execution Patterns with Behavior Trees | 7 | none: no live mode |
+| L8 | LLM Agents I: Agent Loops, Tool Use, and Structured Output | 17 | `$GEMINI_KEY_FILE` or `/dev/shm/enpm663_gemini_key` |
+| L9 | LLM Agents II: VLM Grounding and Agentic Replanning | 4 | `$GEMINI_KEY_FILE` or `/dev/shm/enpm663_gemini_key` |
+| L10 | Frames, Transforms, and Motion Planning | 2 | none: no live mode |
+| L11 | Recovery, Robustness, and Failure Handling for Agentic Systems | 4 | none: no live mode |
+| L12 | Evaluation and Measurement Science for Agentic Systems | 4 | none: no live mode |
+| L13 | The Physical AI Frontier: VLAs, Robot Foundation Models, and World Models | 10 | `~/.config/enpm663/gemini_key`, `$GEMINI_KEY_FILE`, or the `KEY_FILE` you pass |
 
 "Scripts here" counts every managed file `tools/classify.py` found for that
-lecture, including its test files. See `lectureN/README.md` for what each one
-shows.
+lecture, including its test files. A managed file is one that
+`tools/sync_course.py` keeps identical here and in the course's slides and
+docs repositories (the slides repository only, for a file the docs do not
+carry). "Key file for a live mode" names the key files the lecture's live
+modes read (see "Which scripts call the Gemini API" above); no `run_repo.sh`
+step reads them. See `lectureN/README.md` for what each one shows.
 
 ## What is not here, and why
 
@@ -141,7 +174,8 @@ uv run python tools/sync_course.py --check
 
 (prefix each command with `env -u PYTHONPATH` if your terminal has ROS 2
 sourced). It lists each copy that differs or is missing, then prints
-`N problem(s)`. Edit a script here, then copy it into both repositories:
+`N problem(s)`. Edit a script here, then copy it into the slides and docs
+repositories:
 
 ```bash
 uv run python tools/sync_course.py --write

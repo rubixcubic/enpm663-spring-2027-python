@@ -3,6 +3,10 @@
 Four managed files. They build on the L8 code, so keep `lecture9/code/` next
 to `lecture8/code/`.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`vlm_check.py`**: the prompts, the schema, `check()` and `cross_check()`.
   Run on its own, it plays the scripted run: a weak prompt, a structured
   prompt with one re-prompt, and a cross-check before a high-priority
@@ -14,8 +18,9 @@ to `lecture8/code/`.
   (excerpt)". Its recorded outputs, `outputs/closed_loop_replan_rec1.txt`
   and `outputs/closed_loop_wait_rec1.txt`, need ARIAC and a key and are not
   reproduced by `run_repo.sh` here.
-- **`tests/test_vlm_check.py`**: not described on the docs code page. Not
-  shown on a slide. Pytest tests; `run_repo.sh` does not run them here (run
+- **`tests/test_vlm_check.py`**: `vlm_check.py`: the scripted run is
+  unchanged; the image conversion; the cross-check. Not described on the docs
+  code page. Not shown on a slide. Pytest tests; `run_repo.sh` does not run them here (run
   them with `cd lecture9/code && env -u PYTHONPATH uv run python -m
   pytest tests`).
 - **`tests/test_closed_loop.py`**: `closed_loop.py` with `FakeTools`: both

@@ -4,6 +4,10 @@ Seven managed scripts. None of them uses ROS communication or the ARIAC
 simulation: the skills, the testers and the AGV are mock stand-ins written in
 Python.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`executor.py`**: the plan-to-BT executor: the mock factory, the guard,
   act, verify and update leaves, the builders, the registry, `build_tree`
   and the tick logger. The demos import it; it is not run on its own. Slide:

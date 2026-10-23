@@ -3,6 +3,10 @@
 Nine managed scripts. Two are modules the others import (`synth.py`,
 `detector.py`); the rest print the outputs the slides show.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`synth.py`**: module, not a script; synthetic scans of a cell, its
   defects and the lidars. Slide: "Made Up in NumPy (lecture5/code/synth.py)".
   No output file of its own; imported by the other scripts.

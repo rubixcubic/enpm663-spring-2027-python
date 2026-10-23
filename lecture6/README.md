@@ -5,6 +5,10 @@ them uses ROS 2 or the ARIAC simulation: the planner works on PDDL files, and
 the factory state is a Python dictionary with values chosen for the
 examples.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`plan_kit.py`**: Demo 1: load the domain and problem, plan, print the
   plan, write `../outputs/plan.txt`. Slide: "lecture6/code/plan_kit.py
   (lines 11 to 23)". Writes `outputs/plan_kit.txt` and `outputs/plan.txt`.

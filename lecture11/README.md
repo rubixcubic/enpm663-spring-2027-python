@@ -3,6 +3,10 @@
 Four managed scripts. None of them needs a simulator or a model: each runs in
 plain Python and prints a trace.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`recovery_tree.py`**: a selector, a Retry decorator and a guard, in four
   separate runs with injected failures. Slide:
   "lecture11/code/recovery_tree.py (excerpt)". Writes

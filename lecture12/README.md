@@ -4,6 +4,10 @@ Four managed scripts. None of them uses ROS 2 or the ARIAC simulation: they
 read small data files that sit next to them, or need none, and print their
 results.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`perception_metrics.py`**: precision and recall from a labeled set of 20
   cells, and the position error of 8 top shell spawns. Slide:
   "lecture12/code/perception_metrics.py (excerpt)". Writes

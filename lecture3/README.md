@@ -2,6 +2,10 @@
 
 Three managed scripts. None needs ROS 2 or a simulator.
 
+A managed file is one that `tools/sync_course.py` keeps identical here and in
+the course's slides and docs repositories (the slides repository only, for a
+file the docs do not carry).
+
 - **`kit_views.py`**: writes one kit state three ways (PDDL facts, text, and a
   JSON record in `kit_record.json`), checks the record and two bad copies
   against a JSON schema, and computes the voltage range for the kit's fourth
