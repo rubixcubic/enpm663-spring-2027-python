@@ -111,13 +111,19 @@ wording.
   `run_sim_demo.sh`, which needs ARIAC and Docker. Neither is in this
   repository.
 - **Outputs that need what this repository cannot carry.** Raw camera images
-  and API responses (several recorded runs in lectures 8, 9 and 13), an
-  ARIAC source checkout (lecture 5's `mesh_depths.py`), and the course's
-  Docker container (several lectures' `versions.txt`). `run_repo.sh` prints a
-  `skipped ...` line for each such step instead of running it. A few other
-  steps are skipped for their own reasons (a `g++`/BehaviorTree.CPP build in
-  lecture 7, two shell test scripts, the deck's own `.tex` file for a
-  listings check in lectures 8 and 9); `run_repo.sh` names each one.
+  and API responses (several recorded runs in lectures 8, 9 and 13), and an
+  ARIAC source checkout (lecture 5's `mesh_depths.py`). `run_repo.sh` prints a
+  `skipped ...` line for each such step instead of running it.
+- **Several lectures' `versions.txt` is skipped, for a few different
+  reasons.** Lectures 4, 5, 7, 10 and 11 need ROS 2 sourced (lecture 7 also
+  needs `g++` and BehaviorTree.CPP) to report the versions ROS 2 packages;
+  lectures 8 and 9 need the course's Docker container
+  (`enpm663_skills_dev`); lecture 6's `versions.txt` compares a system Python
+  against a venv Python, which are the same uv environment here, so
+  `run_repo.sh` does not rerun that comparison. A few other steps are
+  skipped for their own reasons (two shell test scripts, the deck's own
+  `.tex` file for a listings check in lectures 8 and 9); `run_repo.sh` names
+  each one.
 
 ## For maintainers
 
@@ -148,8 +154,8 @@ bash tools/run_all_lectures.sh
 scripts import without ROS 2, and which files go to the slides repository,
 the docs repository, or both) by reading every script's imports. It never
 touches the `outputs/` entries: those were added by hand, after checking which
-outputs a managed script actually writes, and must be kept by hand when
-`classify.py` is rerun.
+outputs a managed script writes, and must be kept by hand when `classify.py`
+is rerun.
 
 ## Pushing (for the instructor)
 
