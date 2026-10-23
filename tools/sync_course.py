@@ -1,7 +1,11 @@
 """Copy the lecture scripts from this repository into the slides and docs repos, or check the copies.
 
-    uv run python tools/sync_course.py --check    # exit 1 if a copy differs or is missing
-    uv run python tools/sync_course.py --write    # copy this repository's files over the copies
+    uv run python tools/sync_course.py --check            # exit 1 if a copy differs or is missing
+    uv run python tools/sync_course.py --write            # copy this repository's files over the copies
+    uv run python tools/sync_course.py --write --force    # the same, even over a newer copy
+
+--write refuses to copy anything when a copy that differs is newer than this repository's
+file (for example an output regenerated in the slides repo): it lists each one and exits 1.
 
 tools/manifest.toml lists the managed files per lecture: "both" go to the slides and the docs
 repos, "slides" to the slides repo only. tools/course_paths.toml gives the two lecture folders,
@@ -92,12 +96,21 @@ def check(root: Path) -> tuple[list[str], list[str]]:
     return problems, notes
 
 
-def write(root: Path) -> list[str]:
-    todo = pairs(root)
+def write(root: Path, force: bool = False) -> list[str]:
+    todo = [(src, dst) for src, dst in pairs(root)
+            if not (dst.is_file() and filecmp.cmp(src, dst, shallow=False))]
+    newer = [dst for src, dst in todo
+             if dst.is_file() and dst.stat().st_mtime > src.stat().st_mtime]
+    if newer and not force:
+        print("refused: these copies are newer than this repository's files, so nothing was copied:",
+              file=sys.stderr)
+        for dst in newer:
+            print(f"  {dst}", file=sys.stderr)
+        print("Copy each one into this repository by hand and run --check, "
+              "or run --write --force to overwrite them.", file=sys.stderr)
+        sys.exit(1)
     written = []
     for src, dst in todo:
-        if dst.is_file() and filecmp.cmp(src, dst, shallow=False):
-            continue
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
         written.append(str(dst))
@@ -109,9 +122,13 @@ def main() -> int:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--check", action="store_true")
     mode.add_argument("--write", action="store_true")
+    parser.add_argument("--force", action="store_true",
+                        help="with --write: also overwrite copies newer than this repository's files")
     args = parser.parse_args()
+    if args.force and not args.write:
+        parser.error("--force works only with --write")
     if args.write:
-        for path in write(ROOT):
+        for path in write(ROOT, force=args.force):
             print(f"wrote {path}")
     problems, notes = check(ROOT)
     for line in notes:

@@ -1,4 +1,5 @@
 """Tests for sync_course.py on a temporary layout (no real repos touched)."""
+import os
 from pathlib import Path
 
 import pytest
@@ -46,9 +47,17 @@ def test_check_reports_missing_copy(tmp_path):
     assert len(problems) == 1 and "missing" in problems[0]
 
 
+def make_older(path: Path, than: Path) -> None:
+    """Set path's modification time 60 s before than's."""
+    t = than.stat().st_mtime - 60
+    os.utime(path, (t, t))
+
+
 def test_write_overwrites_drift(tmp_path):
     root = make_layout(tmp_path, MANIFEST)
-    (tmp_path / "docs/source/lectures/lecture2/code/toy.py").write_text("print('edited')\n")
+    copy = tmp_path / "docs/source/lectures/lecture2/code/toy.py"
+    copy.write_text("print('edited')\n")
+    make_older(copy, root / "lecture2/code/toy.py")
     written = sync_course.write(root)
     assert len(written) == 2
     for base in ("slides/lectures", "docs/source/lectures"):
@@ -138,3 +147,28 @@ def test_destination_resolving_outside_lecture_refused(tmp_path):
         sync_course.write(root)
     assert "outside" in str(err.value) and "toy.py" in str(err.value)
     assert not (elsewhere / "toy.py").exists()
+
+
+def test_write_refuses_newer_copy(tmp_path, capsys):
+    root = make_layout(tmp_path, MANIFEST)
+    src = root / "lecture2/code/toy.py"
+    newer = tmp_path / "docs/source/lectures/lecture2/code/toy.py"
+    newer.write_text("print('regenerated')\n")
+    make_older(src, newer)
+    with pytest.raises(SystemExit) as err:
+        sync_course.write(root)
+    assert err.value.code == 1
+    assert str(newer) in capsys.readouterr().err
+    assert newer.read_text() == "print('regenerated')\n"
+    assert not (tmp_path / "slides/lectures/lecture2/code/toy.py").exists()
+
+
+def test_write_force_overwrites_newer_copy(tmp_path):
+    root = make_layout(tmp_path, MANIFEST)
+    src = root / "lecture2/code/toy.py"
+    newer = tmp_path / "docs/source/lectures/lecture2/code/toy.py"
+    newer.write_text("print('regenerated')\n")
+    make_older(src, newer)
+    written = sync_course.write(root, force=True)
+    assert len(written) == 2
+    assert newer.read_text() == "print('toy')\n"

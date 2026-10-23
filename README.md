@@ -128,22 +128,32 @@ wording.
 
 ## For maintainers
 
-This repository is the master copy of the lecture scripts. Edit a script
-here, then run:
-
-```bash
-uv run python tools/sync_course.py --write
-```
-
-(prefix with `env -u PYTHONPATH` if your terminal has ROS 2 sourced), then
-rebuild the lecture's deck and docs page. Before you commit, check that the
-copies agree:
+This repository is the master copy of the lecture scripts. Start by checking
+that the copies in the slides and docs repositories agree with this
+repository:
 
 ```bash
 uv run python tools/sync_course.py --check
 ```
 
-This must print `0 problem(s)`.
+(prefix each command with `env -u PYTHONPATH` if your terminal has ROS 2
+sourced). It lists each copy that differs or is missing, then prints
+`N problem(s)`. Edit a script here, then copy it into both repositories:
+
+```bash
+uv run python tools/sync_course.py --write
+```
+
+`--write` copies nothing when a copy that differs is newer than this
+repository's file: it lists each such copy and exits 1. `--write --force`
+overwrites them anyway. Then rebuild the lecture's deck and docs page. Before
+you commit, run `--check` again. It must print `0 problem(s)`.
+
+Some outputs can only be regenerated in the slides repository, because they
+need ROS 2 or the course's Docker container (for example the `versions.txt`
+files of lectures 4, 5, 7, 8, 9, 10 and 11). To bring such a file back, copy
+it by hand from the slides repository to the same path here, with a plain
+`cp`, then run `--check`.
 
 To rerun every lecture and refresh `tools/run_report.txt`:
 
